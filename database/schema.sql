@@ -16,17 +16,8 @@ create table "userInfo" (
 
 create table "gameInfo" (
   "gameId"       serial,
-  "title"        text not null unique,
+  "title"        text not null,
   "img"          text not null,
   "description"  text not null,
   primary key ("gameId")
-);
-
-create table "postsInfo" (
-  "gameId"      serial,
-  "userId"      text not null,
-  "post"        text not null,
-  "createdAt"   timestamptz(6) not null default now(),
-  FOREIGN KEY (gameId) REFERENCES gameInfo(gameId),
-  FOREIGN KEY (userId) REFERENCES userInfo(userId)
 );
