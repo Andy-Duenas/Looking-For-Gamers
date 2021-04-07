@@ -1,9 +1,10 @@
 import React from 'react';
+import SearchBox from '../components/searchbox';
 
-export default function Home(props) {
+export default function Search(props) {
   return (
     <>
-    <div>hi</div>
+    <SearchBox />
     </>
   );
 }

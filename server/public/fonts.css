@@ -1,0 +1,30 @@
+
+.container {
+  background-color: #212121;
+}
+
+.header,
+.search-box {
+  background-color: #323232;
+}
+
+.column-one-third {
+  font-size: 20px;
+}
+
+.icon {
+  color: #14ffec;
+}
+
+.column-two-third {
+  font-size: 30px;
+  font-family: 'Rubik', sans-serif;
+  color: white;
+}
+
+.search-button {
+  background-color: lightgrey;
+  border-radius: 20px;
+  border-width: 0;
+  font-size: 20px;
+}

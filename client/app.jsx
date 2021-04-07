@@ -1,6 +1,6 @@
 import React from 'react';
 // import Home from './pages/home';
-// import Search from './pages/search';
+import Search from './pages/search';
 import Header from './components/header';
 export default class App extends React.Component {
 
@@ -8,6 +8,7 @@ export default class App extends React.Component {
     return (
       <div className="container">
       <Header />
+      <Search />
       </div>
     );
   }

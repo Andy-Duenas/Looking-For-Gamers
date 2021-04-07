@@ -13,28 +13,33 @@ body {
 
 .row {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header {
-  justify-content: center;
-  align-items: center;
   width: 100%;
   height: 60px;
-  background-color: #323232;
 }
 
 .column-one-third {
   position: absolute;
   left: 1.5rem;
-  font-size: 20px;
 }
 
-.icon {
-  color: #14ffec;
+.search-box {
+  border-style: none;
+  padding: 0 10%;
+  height: 80px;
 }
 
-.column-two-third {
-  font-size: 30px;
-  font-family: 'Rubik', sans-serif;
-  color: white;
+.textbox {
+  width: 100%;
+  height: 35px;
+  margin-bottom: 10px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: flex-end;
 }
