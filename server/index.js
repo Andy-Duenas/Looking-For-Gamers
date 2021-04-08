@@ -22,6 +22,7 @@ app.use(jsonMiddleware);
 app.get('/api/search/:title', (req, res) => {
   const title = req.params.title;
   axios.get(`http://www.giantbomb.com/api/search/?api_key=${process.env.API_KEY}&format=json&query="${title}"&resources=game`)
+    // `http://www.giantbomb.com/api/games/?api_key=${process.env.API_KEY}&format=json&filter=name:${title}`
     .then(result => res.json(result.data.results))
     .catch(err => console.error(err));
 });
