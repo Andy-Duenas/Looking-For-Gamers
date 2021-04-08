@@ -43,3 +43,27 @@ body {
   display: flex;
   justify-content: flex-end;
 }
+
+.row-game {
+  margin: 1rem 0;
+  display: flex;
+}
+
+.img-container {
+  width: 30%;
+  align-self: center;
+}
+
+img {
+  width: 100%;
+}
+
+.title-post {
+  width: 60%;
+  padding-left: 10px;
+}
+
+.heart-container {
+  width: 10%;
+  padding-top: 10px;
+}

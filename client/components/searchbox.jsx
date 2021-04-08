@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from 'react';
 
 export default class SearchBox extends React.Component {
@@ -15,7 +14,7 @@ export default class SearchBox extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('state:', this.state);
+
     event.target.reset();
   }
 

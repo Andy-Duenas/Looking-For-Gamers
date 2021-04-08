@@ -28,3 +28,16 @@
   border-width: 0;
   font-size: 20px;
 }
+
+.row-game {
+  background-color: #323232;
+}
+
+.title-post,
+.heart-container {
+  color: white;
+}
+
+.heart-icon {
+  font-size: 25px;
+}
