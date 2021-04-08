@@ -3,18 +3,18 @@ import React from 'react';
 export default class SearchBox extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { searchFor: '' };
+    this.state = { game: '' };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ searchFor: event.target.value });
+    this.setState({ game: event.target.value });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-
+    this.props.onSubmit({ game: this.state.game });
     event.target.reset();
   }
 

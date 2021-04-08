@@ -1,8 +1,14 @@
+/* eslint-disable no-console */
 import React from 'react';
 
-export default function SingleGame(props) {
+export default class SingleGame extends React.Component {
 
-  return (
+  componentDidMount() {
+    console.log('Single game', this.props, this.state);
+  }
+
+  render() {
+    return (
     <div className="row-game">
       <div className="img-container">
         <img src="https://www.nintendo.com/content/dam/noa/en_US/games/switch/m/monster-hunter-rise-switch/monster-hunter-rise-switch-hero.jpg"></img>
@@ -15,5 +21,6 @@ export default function SingleGame(props) {
         <i className="far fa-heart heart-icon"></i>
       </div>
     </div>
-  );
+    );
+  }
 }
