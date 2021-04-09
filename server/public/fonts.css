@@ -1,0 +1,63 @@
+
+.container,
+.background {
+  background-color: #212121;
+}
+
+.header,
+.search-box {
+  background-color: #323232;
+}
+
+.column-menu {
+  font-size: 20px;
+}
+
+.icon {
+  color: #14ffec;
+  font-size: 25px;
+}
+
+.column-two-third {
+  font-size: 30px;
+  font-family: 'Rubik', sans-serif;
+  color: white;
+}
+
+.search-button {
+  font-family: 'Rubik', sans-serif;
+  background-color: lightgrey;
+  border-radius: 20px;
+  border-width: 0;
+  font-size: 15px;
+  padding: 3px 10px;
+}
+
+.row-game {
+  background-color: #323232;
+}
+
+.title-post,
+.heart-container {
+  color: white;
+}
+
+.title-post {
+  font-family: 'karla', sans-serif;
+}
+
+.heart-icon {
+  font-size: 30px;
+}
+
+@media screen and (min-width: 568px) {
+  .column-menu {
+    font-size: 25px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .column-menu {
+    font-size: 30px;
+  }
+}
