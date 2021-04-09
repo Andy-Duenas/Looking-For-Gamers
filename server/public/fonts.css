@@ -9,7 +9,7 @@
   background-color: #323232;
 }
 
-.column-one-third {
+.column-menu {
   font-size: 20px;
 }
 
@@ -41,4 +41,16 @@
 
 .heart-icon {
   font-size: 25px;
+}
+
+@media screen and (min-width: 568px) {
+  .column-menu {
+    font-size: 25px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .column-menu {
+    font-size: 30px;
+  }
 }
