@@ -1,5 +1,6 @@
 
-.container {
+.container,
+.background {
   background-color: #212121;
 }
 

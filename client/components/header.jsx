@@ -6,8 +6,10 @@ export default class App extends React.Component {
     return (
       <>
         <div className="row header">
-          <div className="column-one-third"><i className="fas fa-bars icon"></i></div>
-          <div className="column-two-third">Search</div>
+          <div className="menu-container">
+           <div className="column-menu"><i className="fas fa-bars icon"></i></div>
+           <div className="column-two-third">Search</div>
+          </div>
         </div>
       </>
     );

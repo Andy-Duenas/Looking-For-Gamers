@@ -4,15 +4,14 @@ import SingleGame from '../components/singlegame';
 export default function TodoList(props) {
 
   return (
-    <ul className="list-group shadow-sm">
+    <ul>
       {
         props.games.map(single => {
           return (
             <SingleGame
               key={single.name}
               title={single.name}
-              img={single.image.thumb_url}
-              description={single.deck}
+              img={single.image.super_url}
             />
           );
         })
