@@ -1,7 +1,7 @@
 import React from 'react';
 import SingleGame from '../components/singlegame';
 
-export default function TodoList(props) {
+export default function GameList(props) {
 
   return (
     <ul>
