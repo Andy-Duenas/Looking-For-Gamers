@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBox from '../components/searchbox';
 import List from '../components/game-list';
+
 export default class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +19,6 @@ export default class Search extends React.Component {
   }
 
   render() {
-
     return (
       <>
         <SearchBox onSubmit={this.makeGameList} />
