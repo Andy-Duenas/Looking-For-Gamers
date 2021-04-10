@@ -1,14 +1,14 @@
 import React from 'react';
 import Search from './pages/search';
 import Header from './components/header';
-import Game from './pages/game';
 import ParseRoute from './lib/parse-route';
-
+import Game from './pages/game';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      route: ParseRoute(window.location.hash)
+      route: ParseRoute(window.location.hash),
+      game: {}
     };
   }
 
@@ -24,8 +24,10 @@ export default class App extends React.Component {
     if (route.path === '' || route.path === 'search') {
       return <Search />;
     }
+
     if (route.path === 'game') {
-      return <Game />;
+      const gameTitle = route.params.get('guid');
+      return <Game game={gameTitle}/>;
     }
   }
 

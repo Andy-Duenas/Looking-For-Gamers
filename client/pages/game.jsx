@@ -14,7 +14,12 @@ export default class Game extends React.Component {
   render() {
 
     return (
-      <h2 onClick={this.name}>hi</h2>
+      <>
+      <a href="#search">
+      <i className="fas fa-arrow-left" onClick={this.handlePageC}></i>
+      </a>
+      <h1 onClick={this.name}>Hello World</h1>
+      </>
     );
   }
 }

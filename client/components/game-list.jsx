@@ -2,7 +2,6 @@ import React from 'react';
 import SingleGame from '../components/singlegame';
 
 export default function GameList(props) {
-
   return (
     <ul>
       {
@@ -12,6 +11,7 @@ export default function GameList(props) {
               key={single.name}
               title={single.name}
               img={single.image.super_url}
+              guid={single.guid}
             />
           );
         })

@@ -1,10 +1,6 @@
 import React from 'react';
 
 export default class App extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.handleHeaderName = this.handleHeaderName.bind(this);
-  // }
 
   handleHeaderName() {
     const { currentPage } = this.props;
