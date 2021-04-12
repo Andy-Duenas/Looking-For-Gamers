@@ -62,8 +62,12 @@ p {
   border-radius: 10px;
   border-width: 0;
   padding: 12px 17px;
-  font-size: 15px;
+  font-size: 18px;
   font-family: 'Rubik', sans-serif;
+}
+
+.col-title {
+  font-size: 30px;
 }
 
 @media screen and (min-width: 568px) {

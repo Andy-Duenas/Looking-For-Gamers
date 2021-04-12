@@ -79,7 +79,6 @@ img {
 
 .col-title {
   width: 100%;
-  display: flex;
   justify-content: space-between;
   text-align: center;
 }
@@ -175,13 +174,14 @@ li {
     width: 50%;
     margin-top: 2rem;
     border-radius: 20px;
-    padding: 0 7%;
+    padding: 0 9%;
   }
 
   .col-title,
   .col-description,
   .col-posts,
   .back-arrow {
+    margin-top: 0.5rem;
     padding: 0%;
   }
 
