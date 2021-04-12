@@ -62,7 +62,6 @@ p {
   border-radius: 10px;
   border-width: 0;
   padding: 12px 17px;
-  margin: 1rem;
   font-size: 15px;
   font-family: 'Rubik', sans-serif;
 }
@@ -76,5 +75,9 @@ p {
 @media screen and (min-width: 1024px) {
   .column-menu {
     font-size: 30px;
+  }
+
+  #game-container {
+    background-color: #323232;
   }
 }
