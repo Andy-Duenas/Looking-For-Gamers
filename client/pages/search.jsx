@@ -6,8 +6,7 @@ export default class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchFor: [],
-      singleGame: {}
+      searchFor: []
     };
     this.makeGameList = this.makeGameList.bind(this);
   }

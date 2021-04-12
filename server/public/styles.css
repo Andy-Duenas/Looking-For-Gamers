@@ -135,6 +135,12 @@ li {
     width: 80%;
     margin: 1rem auto;
   }
+
+  .col-title,
+  .col-description,
+  .col-posts {
+    padding: 0 20%;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -165,6 +171,7 @@ li {
     width: 50%;
     margin-top: 2rem;
     border-radius: 20px;
+    padding: 0 10%;
   }
 
   #game-container {
@@ -174,7 +181,12 @@ li {
   .col-title,
   .col-description,
   .col-posts {
-    padding: 0 10%;
+    padding: 0%;
+  }
+
+  .img-cont {
+    width: 450px;
+    height: auto;
   }
 
   .heart-container {
