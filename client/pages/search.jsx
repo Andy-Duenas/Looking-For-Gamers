@@ -6,7 +6,8 @@ export default class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchFor: []
+      searchFor: [],
+      singleGame: {}
     };
     this.makeGameList = this.makeGameList.bind(this);
   }
@@ -25,7 +26,7 @@ export default class Search extends React.Component {
       <>
         <SearchBox onSubmit={this.makeGameList} />
         <div className="background">
-        <List games={this.state.searchFor}></List>
+        <List games={this.state.searchFor} getGame={this.props.getGame}></List>
         </div>
       </>
     );
