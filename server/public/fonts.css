@@ -1,6 +1,6 @@
-
 .container,
-.background {
+.background,
+.game-container {
   background-color: #212121;
 }
 
@@ -38,16 +38,33 @@
 }
 
 .title-post,
-.heart-container {
+.heart-container,
+p {
   color: white;
-}
-
-.title-post {
   font-family: 'karla', sans-serif;
 }
 
+.col-posts,
+.col-description {
+  font-family: 'karla', sans-serif;
+}
+
+.arrow-icon,
 .heart-icon {
   font-size: 30px;
+}
+
+.single-title {
+  font-size: 20px;
+}
+
+.enter-button {
+  border-radius: 10px;
+  border-width: 0;
+  padding: 12px 17px;
+  margin: 1rem;
+  font-size: 15px;
+  font-family: 'Rubik', sans-serif;
 }
 
 @media screen and (min-width: 568px) {

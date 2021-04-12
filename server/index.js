@@ -17,13 +17,6 @@ app.get('/api/search/:title', (req, res) => {
     .catch(err => console.error(err));
 });
 
-app.get('/api/search/:id', (req, res) => {
-  const id = req.params.id;
-  axios.get(`https://www.giantbomb.com/api/game/${id}/?api_key=${process.env.API_KEY}&format=json`)
-    .then(result => res.json(result.data.results))
-    .catch(err => console.error(err));
-});
-
 app.listen(process.env.PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`express server listening on port ${process.env.PORT}`);
