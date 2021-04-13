@@ -53,6 +53,27 @@ app.post('/api/add/:gameId', (req, res) => {
     });
 });
 
+app.delete('/api/remove/:gameId', (req, res) => {
+  const gameId = req.params.gameId;
+  const sql = `
+    delete from "favorites"
+    where "gameId" = $1
+    returning *
+  `;
+  const params = [gameId];
+  db.query(sql, params)
+    .then(result => {
+      const [todo] = result.rows;
+      res.status(201).json(todo);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
+    });
+});
+
 app.listen(process.env.PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`express server listening on port ${process.env.PORT}`);

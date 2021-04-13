@@ -1,15 +1,26 @@
 /* eslint-disable no-console */
-export default function addToFavorites(game) {
-  console.log(`addToFavorite game=${game}`);
+export function addToFavorites(game) {
   fetch(`/api/add/${game}`, {
     method: 'POST',
-    body: game
+    body: JSON.stringify(game)
   })
     .then(res => res.json())
     .then(data => {
       console.log(data);
-      return data;
     })
     .catch(err => console.error(err));
-  console.log(`addToFavorite game=${game}`);
 }
+
+export function removeFromFavorites(game) {
+  fetch(`/api/remove/${game}`, {
+    method: 'DELETE',
+    body: JSON.stringify(game)
+  })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+    })
+    .catch(err => console.error(err));
+}
+
+export default { addToFavorites, removeFromFavorites };

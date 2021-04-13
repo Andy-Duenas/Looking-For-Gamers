@@ -1,5 +1,5 @@
 import React from 'react';
-import AddToFavorites from '../lib/handle-favorite';
+import { removeFromFavorites } from '../lib/handle-favorite';
 
 export default class Game extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ export default class Game extends React.Component {
   }
 
   handleFavorites(e) {
-    AddToFavorites(this.state.game[0].id);
+    removeFromFavorites(this.state.game[0].id);
   }
 
   render() {

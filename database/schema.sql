@@ -15,7 +15,7 @@ create table "userInfo" (
 );
 
 create table "gameInfo" (
-  "gameId"       text not null,
+  "gameId"       integer not null,
   "title"        text not null unique,
   "img"          text not null,
   "description"  text not null,
@@ -23,7 +23,7 @@ create table "gameInfo" (
 );
 
 create table "favorites" (
-  "gameId"      text not null,
-  "userId"      text not null,
+  "gameId"      integer not null,
+  "userId"      integer not null,
   "createdAt"   timestamptz(6) not null default now()
 );
