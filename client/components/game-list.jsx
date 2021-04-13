@@ -9,7 +9,7 @@ export default function GameList(props) {
             <SingleGame
               key={single.name}
               title={single.name}
-              img={single.image.super_url}
+              img={single.image.medium_url}
               gameid={single.id}
               deck={single.deck}
               guid={single.guid}
