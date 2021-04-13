@@ -1,6 +1,6 @@
-
 .container,
-.background {
+.background,
+.game-container {
   background-color: #212121;
 }
 
@@ -38,15 +38,35 @@
 }
 
 .title-post,
-.heart-container {
+.heart-container,
+p {
   color: white;
-}
-
-.title-post {
   font-family: 'karla', sans-serif;
 }
 
+.col-posts,
+.col-description {
+  font-family: 'karla', sans-serif;
+}
+
+.arrow-icon,
 .heart-icon {
+  font-size: 30px;
+}
+
+.single-title {
+  font-size: 20px;
+}
+
+.enter-button {
+  border-radius: 10px;
+  border-width: 0;
+  padding: 12px 17px;
+  font-size: 18px;
+  font-family: 'Rubik', sans-serif;
+}
+
+.col-title {
   font-size: 30px;
 }
 
@@ -59,5 +79,9 @@
 @media screen and (min-width: 1024px) {
   .column-menu {
     font-size: 30px;
+  }
+
+  #game-container {
+    background-color: #323232;
   }
 }
