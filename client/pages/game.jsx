@@ -1,10 +1,34 @@
 import React from 'react';
 
 export default class Game extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      game: {},
+      gotData: false
+    };
+  }
+
+  componentDidMount() {
+    const { gameId } = this.props;
+    fetch(`/api/game/${gameId}`)
+      .then(res => res.json())
+      .then(game => {
+        this.setState({ game, gotData: true });
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
 
   render() {
-    const { title, img, deck } = this.props.game;
-    return (
+    if (this.state.gotData === false) {
+      return <h1 className="row">Loading...</h1>;
+    } else {
+      const game = this.state.game;
+      const { name, deck } = game[0];
+      const img = game[0].image.super_url;
+      return (
       <div className="game-container" id="game-container">
         <div className="row">
           <div className="back-arrow">
@@ -20,7 +44,7 @@ export default class Game extends React.Component {
         </div>
         <div className="row">
           <div className="col-title">
-            <p className="single-title">{title}</p>
+            <p className="single-title">{name}</p>
             <div className="heart-container">
               <i className="far fa-heart heart-icon"></i>
             </div>
@@ -40,6 +64,7 @@ export default class Game extends React.Component {
             <button className="enter-button">Enter Thread</button>
           </div>
       </div>
-    );
+      );
+    }
   }
 }

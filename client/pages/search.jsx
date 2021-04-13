@@ -25,7 +25,7 @@ export default class Search extends React.Component {
       <>
         <SearchBox onSubmit={this.makeGameList} />
         <div className="background">
-        <List games={this.state.searchFor} getGame={this.props.getGame}></List>
+        <List games={this.state.searchFor}></List>
         </div>
       </>
     );

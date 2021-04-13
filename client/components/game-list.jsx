@@ -10,10 +10,9 @@ export default function GameList(props) {
               key={single.name}
               title={single.name}
               img={single.image.super_url}
-              id={single.id}
-              description={single.description}
+              gameid={single.id}
               deck={single.deck}
-              getGame={props.getGame}
+              guid={single.guid}
             />
           );
         })
@@ -23,24 +22,21 @@ export default function GameList(props) {
 }
 
 function SingleGame(props) {
-  const { id, title, img, deck, description } = props;
-  const bringBack = () => {
-    props.getGame(id, title, img, deck, description);
-  };
+  const { gameid, img, title } = props;
   return (
-    <div className="row-game" onClick={bringBack}>
-      <div className="img-container">
+     <a href={'#game?gameId=' + gameid}>
+       <div className="row-game">
+       <div className="img-container">
         <img src={img}></img>
-      </div>
-      <div className="title-post">
-        <a href={'#game?id=' + id}>
+       </div>
+       <div className="title-post">
           <p>{title}</p>
-        </a>
         <p>Total Posts: place holder</p>
-      </div>
-      <div className="heart-container">
+        </div>
+       <div className="heart-container">
         <i className="far fa-heart heart-icon"></i>
       </div>
     </div>
+    </a>
   );
 }

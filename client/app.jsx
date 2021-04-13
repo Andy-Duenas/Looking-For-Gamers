@@ -11,7 +11,6 @@ export default class App extends React.Component {
       route: ParseRoute(window.location.hash),
       game: {}
     };
-    this.getGame = this.getGame.bind(this);
   }
 
   componentDidMount() {
@@ -24,17 +23,13 @@ export default class App extends React.Component {
   renderPage() {
     const { route } = this.state;
     if (route.path === '' || route.path === 'search') {
-      return <Search getGame={this.getGame}/>;
+      return <Search />;
     }
 
     if (route.path === 'game') {
-      return <Game game={this.state.game}/>;
+      const gameId = route.params.get('gameId');
+      return <Game gameId={gameId}/>;
     }
-  }
-
-  getGame(id, title, img, deck, description) {
-    const game = { id, title, img, deck, description };
-    this.setState({ game });
   }
 
   render() {
