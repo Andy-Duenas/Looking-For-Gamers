@@ -2,8 +2,16 @@ require('dotenv/config');
 const express = require('express');
 const staticMiddleware = require('./static-middleware');
 const axios = require('axios');
+const pg = require('pg');
 
 const app = express();
+
+const db = new pg.Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
 app.use(staticMiddleware);
 const jsonMiddleware = express.json();
@@ -22,6 +30,27 @@ app.get('/api/game/:gameId', (req, res) => {
   axios.get(`http://www.giantbomb.com/api/games/?api_key=${process.env.API_KEY}&filter=id:${gameId}&format=json`)
     .then(result => res.json(result.data.results))
     .catch(err => console.error(err));
+});
+
+app.post('/api/add/:gameId', (req, res) => {
+  const gameId = req.params.gameId;
+  const sql = `
+    insert into "favorites" ("gameId", "userId")
+    values ($1, 1)
+    returning *
+  `;
+  const params = [gameId];
+  db.query(sql, params)
+    .then(result => {
+      const [todo] = result.rows;
+      res.status(201).json(todo);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
+    });
 });
 
 app.listen(process.env.PORT, () => {
