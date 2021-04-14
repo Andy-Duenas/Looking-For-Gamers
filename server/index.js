@@ -32,6 +32,33 @@ app.get('/api/game/:gameId', (req, res) => {
     .catch(err => console.error(err));
 });
 
+app.get('/api/check/:gameId', (req, res) => {
+  const gameId = req.params.gameId;
+  const userId = 1;
+  const sql = `
+    select *
+    from "favorites"
+    where "gameId" = $1
+    and "userId" = $2
+  `;
+  const params = [gameId, userId];
+  db.query(sql, params)
+    .then(result => {
+      const [todo] = result.rows;
+      if (todo !== undefined) {
+        res.status(201).json(todo);
+      } else {
+        res.status(201).json({ notInDb: 'not in database' });
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
+    });
+});
+
 app.post('/api/add/:gameId', (req, res) => {
   const gameId = req.params.gameId;
   const sql = `

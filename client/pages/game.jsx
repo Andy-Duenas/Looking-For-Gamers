@@ -1,6 +1,5 @@
 import React from 'react';
-import { removeFromFavorites } from '../lib/handle-favorite';
-
+import Heart from '../components/favorite-icon';
 export default class Game extends React.Component {
   constructor(props) {
     super(props);
@@ -8,7 +7,6 @@ export default class Game extends React.Component {
       game: {},
       gotData: false
     };
-    this.handleFavorites = this.handleFavorites.bind(this);
   }
 
   componentDidMount() {
@@ -21,10 +19,6 @@ export default class Game extends React.Component {
       .catch(err => {
         console.error(err);
       });
-  }
-
-  handleFavorites(e) {
-    removeFromFavorites(this.state.game[0].id);
   }
 
   render() {
@@ -51,9 +45,7 @@ export default class Game extends React.Component {
         <div className="row">
           <div className="col-title">
             <p className="single-title">{name}</p>
-            <div className="heart-container" onClick={this.handleFavorites}>
-              <i className="far fa-heart heart-icon"></i>
-            </div>
+            <Heart gameId={this.props.gameId}/>
           </div>
           </div>
           <div className="row">

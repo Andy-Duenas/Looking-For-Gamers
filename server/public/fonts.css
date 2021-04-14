@@ -44,6 +44,10 @@ p {
   font-family: 'karla', sans-serif;
 }
 
+.heart-container-blue {
+  color: #14ffec;
+}
+
 .col-posts,
 .col-description {
   font-family: 'karla', sans-serif;
