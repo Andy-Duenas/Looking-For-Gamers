@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from 'react';
 
 export default class Heart extends React.Component {
@@ -16,10 +15,8 @@ export default class Heart extends React.Component {
       .then(res => res.json())
       .then(data => {
         if (data.notInDb) {
-          console.log('Not In Database');
           this.setState({ inDb: false });
         } else {
-          console.log('In Database');
           this.setState({ inDb: true });
         }
       })
@@ -36,7 +33,6 @@ export default class Heart extends React.Component {
       })
         .then(res => res.json())
         .then(data => {
-          console.log('Data remove', data);
           this.setState({ inDb: false });
         })
         .catch(err => console.error(err));
@@ -47,7 +43,6 @@ export default class Heart extends React.Component {
       })
         .then(res => res.json())
         .then(data => {
-          console.log('Data Add', data);
           this.setState({ inDb: true });
         })
         .catch(err => console.error(err));
