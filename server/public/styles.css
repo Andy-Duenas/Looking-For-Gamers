@@ -25,7 +25,7 @@ body {
 .column-menu {
   position: absolute;
   left: 1.5rem;
-  top: 1.2rem;
+  top: 0;
 }
 
 .search-box {
@@ -133,6 +133,39 @@ li {
   padding: 0;
 }
 
+.icon {
+  margin: 1rem;
+  font-size: 25px;
+}
+
+.cont {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+
+.menu-cont {
+  width: 60%;
+  height: 100%;
+  padding-left: 1rem;
+}
+
+.menu-title {
+  margin: 2rem 0;
+}
+
+.menu-item {
+  margin: 0.5rem 0;
+}
+
+.grey-screen {
+  width: 40%;
+  height: 100%;
+}
+
 @media screen and (min-width: 568px) {
   .search-box {
     margin: auto;
@@ -140,7 +173,6 @@ li {
   }
 
   .row-game {
-    position: relative;
     width: 80%;
     margin: 1rem auto;
   }
@@ -149,6 +181,24 @@ li {
   .col-description,
   .col-posts {
     padding: 0 20%;
+  }
+
+  .menu-cont {
+    width: 30%;
+    padding-left: 3rem;
+    text-align: left;
+  }
+
+  .grey-screen {
+    width: 70%;
+  }
+
+  .menu-title {
+    margin: 3rem 0;
+  }
+
+  .menu-item {
+    margin: 1.5rem 0;
   }
 }
 
@@ -169,7 +219,6 @@ li {
   }
 
   .row-game {
-    position: relative;
     width: 40%;
     margin: 1rem auto;
     height: 150px;

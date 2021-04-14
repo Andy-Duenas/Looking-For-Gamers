@@ -39,7 +39,8 @@
 
 .title-post,
 .heart-container,
-p {
+p,
+.menu-item {
   color: white;
   font-family: 'karla', sans-serif;
 }
@@ -72,6 +73,25 @@ p {
 
 .col-title {
   font-size: 30px;
+}
+
+.menu-cont {
+  background-color: #212121;
+  border-right: 2px solid #202020;
+}
+
+.grey-screen {
+  background-color: rgba(0, 0, 0, 0.336);
+}
+
+.menu-item {
+  font-size: 25px;
+}
+
+.menu-title {
+  color: white;
+  font-family: 'Rubik', sans-serif;
+  font-size: 40px;
 }
 
 @media screen and (min-width: 568px) {
