@@ -1,4 +1,5 @@
 import React from 'react';
+import Heart from './favorite-icon';
 
 export default function GameList(props) {
   return (
@@ -24,8 +25,9 @@ export default function GameList(props) {
 function SingleGame(props) {
   const { gameid, img, title } = props;
   return (
-     <a href={'#game?gameId=' + gameid}>
+    <>
        <div className="row-game">
+       <a href={'#game?gameId=' + gameid}>
        <div className="img-container">
         <img src={img}></img>
        </div>
@@ -33,10 +35,9 @@ function SingleGame(props) {
           <p>{title}</p>
         <p>Total Posts: place holder</p>
         </div>
-       <div className="heart-container">
-        <i className="far fa-heart heart-icon"></i>
-      </div>
+      </a>
+        <Heart gameId={gameid}/>
     </div>
-    </a>
+    </>
   );
 }

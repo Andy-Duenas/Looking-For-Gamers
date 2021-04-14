@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Heart from '../components/favorite-icon';
 export default class Game extends React.Component {
   constructor(props) {
     super(props);
@@ -45,9 +45,7 @@ export default class Game extends React.Component {
         <div className="row">
           <div className="col-title">
             <p className="single-title">{name}</p>
-            <div className="heart-container">
-              <i className="far fa-heart heart-icon"></i>
-            </div>
+            <Heart gameId={this.props.gameId}/>
           </div>
           </div>
           <div className="row">
