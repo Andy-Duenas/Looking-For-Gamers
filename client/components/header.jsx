@@ -10,6 +10,9 @@ export default class App extends React.Component {
     if (currentPage.path === 'game') {
       return 'Game';
     }
+    if (currentPage.path === 'favorites') {
+      return 'Favorites';
+    }
   }
 
   render() {

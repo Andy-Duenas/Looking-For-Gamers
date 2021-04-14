@@ -3,6 +3,7 @@ import Search from './pages/search';
 import Header from './components/header';
 import ParseRoute from './lib/parse-route';
 import Game from './pages/game';
+import Favorites from './pages/favorites';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -29,6 +30,9 @@ export default class App extends React.Component {
     if (route.path === 'game') {
       const gameId = route.params.get('gameId');
       return <Game gameId={gameId}/>;
+    }
+    if (route.path === 'favorites') {
+      return <Favorites/>;
     }
   }
 
