@@ -44,9 +44,9 @@ app.get('/api/check/:gameId', (req, res) => {
   const params = [gameId, userId];
   db.query(sql, params)
     .then(result => {
-      const [todo] = result.rows;
-      if (todo !== undefined) {
-        res.status(201).json(todo);
+      const [game] = result.rows;
+      if (game !== undefined) {
+        res.status(201).json(game);
       } else {
         res.status(201).json({ notInDb: 'not in database' });
       }
@@ -59,18 +59,43 @@ app.get('/api/check/:gameId', (req, res) => {
     });
 });
 
-app.post('/api/add/:gameId', (req, res) => {
-  const gameId = req.params.gameId;
+app.get('/api/favorites', (req, res) => {
+  const userId = 1;
   const sql = `
-    insert into "favorites" ("gameId", "userId")
-    values ($1, 1)
-    returning *
+    select *
+    from "favorites"
+    where "userId" = $1
   `;
-  const params = [gameId];
+  const params = [userId];
   db.query(sql, params)
     .then(result => {
-      const [todo] = result.rows;
-      res.status(201).json(todo);
+      if (result.rows.length !== 0) {
+        res.status(201).json(result.rows);
+      } else {
+        res.status(200).json({ notInDb: 'not in database' });
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
+    });
+});
+
+app.post('/api/add/:gameId', (req, res) => {
+  const gameId = req.params.gameId;
+  const { name, img, deck } = req.body;
+  const sql = `
+    insert into "favorites" ("gameId", "userId", "title", "img", "deck")
+    values ($1, 1, $2, $3, $4)
+    returning *
+  `;
+  const params = [gameId, name, img, deck];
+  db.query(sql, params)
+    .then(result => {
+      const [game] = result.rows;
+      res.status(201).json(game);
     })
     .catch(err => {
       console.error(err);
@@ -90,8 +115,8 @@ app.delete('/api/remove/:gameId', (req, res) => {
   const params = [gameId];
   db.query(sql, params)
     .then(result => {
-      const [todo] = result.rows;
-      res.status(201).json(todo);
+      const [game] = result.rows;
+      res.status(201).json(game);
     })
     .catch(err => {
       console.error(err);

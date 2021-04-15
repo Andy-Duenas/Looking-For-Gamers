@@ -1,5 +1,5 @@
 import React from 'react';
-import Heart from '../components/favorite-icon';
+import Heart from '../components/heart-icon';
 export default class Game extends React.Component {
   constructor(props) {
     super(props);
@@ -23,7 +23,7 @@ export default class Game extends React.Component {
 
   render() {
     if (this.state.gotData === false) {
-      return <h1 className="row">Loading...</h1>;
+      return <h1 className="row"><i className="fas fa-dragon loading-icon"></i></h1>;
     } else {
       const game = this.state.game;
       const { name, deck } = game[0];
@@ -45,7 +45,7 @@ export default class Game extends React.Component {
         <div className="row">
           <div className="col-title">
             <p className="single-title">{name}</p>
-            <Heart gameId={this.props.gameId}/>
+            <Heart gameId={this.props.gameId} game={{ name, deck, img }}/>
           </div>
           </div>
           <div className="row">

@@ -1,5 +1,5 @@
 import React from 'react';
-import Heart from './favorite-icon';
+import Heart from './heart-icon';
 
 export default function GameList(props) {
   return (
@@ -9,11 +9,10 @@ export default function GameList(props) {
           return (
             <SingleGame
               key={single.name}
-              title={single.name}
+              name={single.name}
               img={single.image.medium_url}
               gameid={single.id}
               deck={single.deck}
-              guid={single.guid}
             />
           );
         })
@@ -23,7 +22,8 @@ export default function GameList(props) {
 }
 
 function SingleGame(props) {
-  const { gameid, img, title } = props;
+  const { gameid, img, name, deck } = props;
+
   return (
     <>
        <div className="row-game">
@@ -32,11 +32,11 @@ function SingleGame(props) {
         <img src={img}></img>
        </div>
        <div className="title-post">
-          <p>{title}</p>
+          <p>{name}</p>
         <p>Total Posts: place holder</p>
         </div>
       </a>
-        <Heart gameId={gameid}/>
+        <Heart gameId={gameid} game={{ name, deck, img }}/>
     </div>
     </>
   );

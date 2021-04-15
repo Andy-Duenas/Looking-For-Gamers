@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Menu from './drawer-menu';
 export default class App extends React.Component {
 
   handleHeaderName() {
@@ -10,6 +10,9 @@ export default class App extends React.Component {
     if (currentPage.path === 'game') {
       return 'Game';
     }
+    if (currentPage.path === 'favorites') {
+      return 'Favorites';
+    }
   }
 
   render() {
@@ -17,7 +20,7 @@ export default class App extends React.Component {
       <>
         <div className="row header">
           <div className="menu-container">
-           <div className="column-menu"><i className="fas fa-bars icon"></i></div>
+           <Menu></Menu>
            <div className="column-two-third">{this.handleHeaderName()}</div>
           </div>
         </div>

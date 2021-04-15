@@ -25,5 +25,8 @@ create table "gameInfo" (
 create table "favorites" (
   "gameId"      integer not null,
   "userId"      integer not null,
+  "title"       text not null,
+  "img"         text not null,
+  "deck"        text not null,
   "createdAt"   timestamptz(6) not null default now()
 );
