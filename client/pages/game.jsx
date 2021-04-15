@@ -26,7 +26,7 @@ export default class Game extends React.Component {
       return <h1 className="row"><i className="fas fa-dragon loading-icon"></i></h1>;
     } else {
       const game = this.state.game;
-      const { name, deck } = game[0];
+      const { name, deck, id } = game[0];
       const img = game[0].image.super_url;
       return (
       <div className="game-container" id="game-container">
@@ -59,7 +59,9 @@ export default class Game extends React.Component {
           </div>
           </div>
           <div className="row">
+            <a href={'#thread?gameId=' + id}>
             <button className="enter-button">Enter Thread</button>
+            </a>
           </div>
       </div>
       );

@@ -4,7 +4,7 @@ import Header from './components/header';
 import ParseRoute from './lib/parse-route';
 import Game from './pages/game';
 import Favorites from './pages/favorites';
-
+import Thread from './pages/thread';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -23,16 +23,18 @@ export default class App extends React.Component {
 
   renderPage() {
     const { route } = this.state;
+    const gameId = route.params.get('gameId');
     if (route.path === '' || route.path === 'search') {
       return <Search />;
     }
-
     if (route.path === 'game') {
-      const gameId = route.params.get('gameId');
       return <Game gameId={gameId}/>;
     }
     if (route.path === 'favorites') {
       return <Favorites/>;
+    }
+    if (route.path === 'thread') {
+      return <Thread gameId={gameId}/>;
     }
   }
 

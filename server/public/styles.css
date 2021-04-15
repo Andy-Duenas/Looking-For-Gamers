@@ -167,8 +167,29 @@ li {
 }
 
 .loading-icon {
+  margin-top: 2rem;
   text-align: center;
   color: white;
+}
+
+.row-thread-header {
+  display: flex;
+  width: 100%;
+}
+
+.col-thr-title {
+  width: 80%;
+}
+
+.thread-title {
+  color: white;
+}
+
+.thread-icon {
+  font-size: 40px;
+  width: 10%;
+  display: flex;
+  align-items: center;
 }
 
 @media screen and (min-width: 568px) {

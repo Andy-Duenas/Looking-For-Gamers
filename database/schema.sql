@@ -14,11 +14,11 @@ create table "userInfo" (
   primary key ("userId")
 );
 
-create table "gameInfo" (
+create table "threadTracker" (
   "gameId"       integer not null,
   "title"        text not null unique,
-  "img"          text not null,
-  "description"  text not null,
+  "message"      text not null,
+  "createdAt"   timestamptz(6) not null default now(),
   primary key ("gameId")
 );
 
