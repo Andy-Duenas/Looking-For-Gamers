@@ -148,7 +148,7 @@ li {
 }
 
 .menu-cont {
-  width: 60%;
+  width: 190px;
   height: 100%;
   padding-left: 1rem;
 }
@@ -189,13 +189,13 @@ li {
   }
 
   .menu-cont {
-    width: 30%;
+    width: 460px;
     padding-left: 3rem;
     text-align: left;
   }
 
   .grey-screen {
-    width: 70%;
+    width: 80%;
   }
 
   .menu-title {

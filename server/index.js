@@ -69,7 +69,7 @@ app.get('/api/favorites', (req, res) => {
   const params = [userId];
   db.query(sql, params)
     .then(result => {
-      if (result.rows !== undefined) {
+      if (result.rows.length === 0) {
         res.status(201).json(result.rows);
       } else {
         res.status(201).json({ notInDb: 'not in database' });
