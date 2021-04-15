@@ -44,9 +44,9 @@ app.get('/api/check/:gameId', (req, res) => {
   const params = [gameId, userId];
   db.query(sql, params)
     .then(result => {
-      const [todo] = result.rows;
-      if (todo !== undefined) {
-        res.status(201).json(todo);
+      const [game] = result.rows;
+      if (game !== undefined) {
+        res.status(201).json(game);
       } else {
         res.status(201).json({ notInDb: 'not in database' });
       }
@@ -69,9 +69,8 @@ app.get('/api/favorites', (req, res) => {
   const params = [userId];
   db.query(sql, params)
     .then(result => {
-      const [todo] = result.rows;
-      if (todo !== undefined) {
-        res.status(201).json(todo);
+      if (result.rows !== undefined) {
+        res.status(201).json(result.rows);
       } else {
         res.status(201).json({ notInDb: 'not in database' });
       }
@@ -95,8 +94,8 @@ app.post('/api/add/:gameId', (req, res) => {
   const params = [gameId, name, img, deck];
   db.query(sql, params)
     .then(result => {
-      const [todo] = result.rows;
-      res.status(201).json(todo);
+      const [game] = result.rows;
+      res.status(201).json(game);
     })
     .catch(err => {
       console.error(err);
@@ -116,8 +115,8 @@ app.delete('/api/remove/:gameId', (req, res) => {
   const params = [gameId];
   db.query(sql, params)
     .then(result => {
-      const [todo] = result.rows;
-      res.status(201).json(todo);
+      const [game] = result.rows;
+      res.status(201).json(game);
     })
     .catch(err => {
       console.error(err);

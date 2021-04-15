@@ -14,10 +14,15 @@ export default class Search extends React.Component {
     fetch('/api/favorites')
       .then(res => res.json())
       .then(data => {
-        // console.log('data', data);
-        const array = [];
-        array.push(data);
-        this.setState({ searchFor: array, notLoaded: true });
+        const newData = data.map(single => {
+          const newObj = {};
+          newObj.id = single.gameId;
+          newObj.name = single.title;
+          newObj.image = single.img;
+          newObj.deck = single.deck;
+          return newObj;
+        });
+        this.setState({ searchFor: newData, notLoaded: true });
       })
       .catch(err => console.error(err));
   }
@@ -28,7 +33,7 @@ export default class Search extends React.Component {
     } else {
       return (
         <div className="background">
-        <List games={this.state.searchFor}></List>
+        <List games={this.state.searchFor} favorite={true}></List>
         </div>
       );
     }

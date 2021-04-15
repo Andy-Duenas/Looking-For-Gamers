@@ -2,6 +2,25 @@ import React from 'react';
 import Heart from './heart-icon';
 
 export default function GameList(props) {
+  if (props.favorite) {
+    return (
+    <ul>
+      {
+        props.games.map(single => {
+          return (
+            <SingleGame
+              key={single.name}
+              name={single.name}
+              img={single.image}
+              gameid={single.id}
+              deck={single.deck}
+            />
+          );
+        })
+      }
+    </ul>
+    );
+  }
   return (
     <ul>
       {
