@@ -166,6 +166,11 @@ li {
   height: 100%;
 }
 
+.loading-icon {
+  text-align: center;
+  color: white;
+}
+
 @media screen and (min-width: 568px) {
   .search-box {
     margin: auto;

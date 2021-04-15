@@ -5,8 +5,8 @@ export default class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchFor: [],
-      notLoaded: false
+      gameList: [],
+      loaded: false
     };
   }
 
@@ -18,22 +18,23 @@ export default class Search extends React.Component {
           const newObj = {};
           newObj.id = single.gameId;
           newObj.name = single.title;
-          newObj.image = single.img;
+          newObj.image = {};
+          newObj.image.medium_url = single.img;
           newObj.deck = single.deck;
           return newObj;
         });
-        this.setState({ searchFor: newData, notLoaded: true });
+        this.setState({ gameList: newData, loaded: true });
       })
       .catch(err => console.error(err));
   }
 
   render() {
-    if (this.state.notLoaded === false) {
-      return <h1>Hello</h1>;
+    if (this.state.loaded === false) {
+      return <h1 className="row"><i className="fas fa-dragon loading-icon"></i></h1>;
     } else {
       return (
         <div className="background">
-        <List games={this.state.searchFor} favorite={true}></List>
+        <List games={this.state.gameList}></List>
         </div>
       );
     }

@@ -23,7 +23,7 @@ export default class Game extends React.Component {
 
   render() {
     if (this.state.gotData === false) {
-      return <h1 className="row">Loading...</h1>;
+      return <h1 className="row"><i className="fas fa-dragon loading-icon"></i></h1>;
     } else {
       const game = this.state.game;
       const { name, deck } = game[0];
