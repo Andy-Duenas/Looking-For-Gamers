@@ -1,32 +1,36 @@
 import React from 'react';
-// import List from '../components/game-list';
+import List from '../components/game-list';
 
 export default class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchFor: []
+      searchFor: [],
+      notLoaded: false
     };
-    this.makeGameList = this.makeGameList.bind(this);
   }
 
-  makeGameList(data) {
-    fetch(`/api/search/${data.game}`)
+  componentDidMount() {
+    fetch('/api/favorites')
       .then(res => res.json())
       .then(data => {
-        this.setState({ searchFor: data });
+        // console.log('data', data);
+        const array = [];
+        array.push(data);
+        this.setState({ searchFor: array, notLoaded: true });
       })
       .catch(err => console.error(err));
   }
 
   render() {
-    return (
-      <>
-      <h1>Hi</h1>
-        {/* <div className="background">
+    if (this.state.notLoaded === false) {
+      return <h1>Hello</h1>;
+    } else {
+      return (
+        <div className="background">
         <List games={this.state.searchFor}></List>
-        </div> */}
-      </>
-    );
+        </div>
+      );
+    }
   }
 }

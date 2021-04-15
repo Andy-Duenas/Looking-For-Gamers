@@ -59,14 +59,40 @@ app.get('/api/check/:gameId', (req, res) => {
     });
 });
 
+app.get('/api/favorites', (req, res) => {
+  const userId = 1;
+  const sql = `
+    select *
+    from "favorites"
+    where "userId" = $1
+  `;
+  const params = [userId];
+  db.query(sql, params)
+    .then(result => {
+      const [todo] = result.rows;
+      if (todo !== undefined) {
+        res.status(201).json(todo);
+      } else {
+        res.status(201).json({ notInDb: 'not in database' });
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
+    });
+});
+
 app.post('/api/add/:gameId', (req, res) => {
   const gameId = req.params.gameId;
+  const { name, img, deck } = req.body;
   const sql = `
-    insert into "favorites" ("gameId", "userId")
-    values ($1, 1)
+    insert into "favorites" ("gameId", "userId", "title", "img", "deck")
+    values ($1, 1, $2, $3, $4)
     returning *
   `;
-  const params = [gameId];
+  const params = [gameId, name, img, deck];
   db.query(sql, params)
     .then(result => {
       const [todo] = result.rows;

@@ -25,7 +25,7 @@ export default class Heart extends React.Component {
 
   handleFavorite() {
     const { inDb } = this.state;
-    const { gameId } = this.props;
+    const { gameId, game } = this.props;
     if (inDb) {
       fetch(`/api/remove/${gameId}`, {
         method: 'DELETE',
@@ -39,7 +39,10 @@ export default class Heart extends React.Component {
     } else {
       fetch(`/api/add/${gameId}`, {
         method: 'POST',
-        body: JSON.stringify(gameId)
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(game)
       })
         .then(res => res.json())
         .then(data => {
