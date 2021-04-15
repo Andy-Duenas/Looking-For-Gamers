@@ -14,16 +14,18 @@ export default class Search extends React.Component {
     fetch('/api/favorites')
       .then(res => res.json())
       .then(data => {
-        const newData = data.map(single => {
-          const newObj = {};
-          newObj.id = single.gameId;
-          newObj.name = single.title;
-          newObj.image = {};
-          newObj.image.medium_url = single.img;
-          newObj.deck = single.deck;
-          return newObj;
-        });
-        this.setState({ gameList: newData, loaded: true });
+        if (!data.notInDb) {
+          const newData = data.map(single => {
+            const newObj = {};
+            newObj.id = single.gameId;
+            newObj.name = single.title;
+            newObj.image = {};
+            newObj.image.medium_url = single.img;
+            newObj.deck = single.deck;
+            return newObj;
+          });
+          this.setState({ gameList: newData, loaded: true });
+        }
       })
       .catch(err => console.error(err));
   }
