@@ -94,6 +94,22 @@ p,
   font-size: 40px;
 }
 
+.post-button {
+  border-radius: 20px;
+  border-width: 0;
+  width: 6rem;
+  height: 2rem;
+  font-size: 18px;
+  font-family: 'Rubik', sans-serif;
+  color: white;
+  background-color: #212121;
+}
+
+.cancel {
+  color: white;
+  font-family: 'Rubik', sans-serif;
+}
+
 @media screen and (min-width: 568px) {
   .column-menu {
     font-size: 25px;

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Addpost from '../components/add-post';
 export default class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -23,6 +23,7 @@ export default class Search extends React.Component {
   }
 
   render() {
+    const { name } = this.state.game;
     return (
       <>
         <div className="row-thread-back">
@@ -34,12 +35,10 @@ export default class Search extends React.Component {
         </div>
         <div className="row-thread-header">
           <div className="col-thr-title">
-            <h1 className="thread-title">Title</h1>
+            <p className="thread-title">{name}</p>
             <p className="thread-total">Total Posts: PlaceHolder</p>
           </div>
-          <div className="thread-icon">
-            <i className="fas fa-plus-circle"></i>
-          </div>
+          <Addpost></Addpost>
         </div>
       </>
     );
