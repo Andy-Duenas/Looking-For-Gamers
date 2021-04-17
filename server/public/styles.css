@@ -169,7 +169,6 @@ li {
 .loading-icon {
   margin-top: 2rem;
   text-align: center;
-  color: white;
 }
 
 .row-thread-header {
@@ -178,29 +177,17 @@ li {
   padding-left: 10px;
 }
 
-.col-thr-title {
-  width: 80%;
-}
-
-.thread-title {
-  color: white;
-  font-size: 20px;
-}
-
 .thread-icon {
-  font-size: 40px;
-  width: 10%;
-  display: flex;
   align-items: center;
-  color: #14ffec;
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .background-add {
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: rgba(17, 17, 16, 0.164);
-  display: flex;
   left: 0;
 }
 
@@ -208,11 +195,10 @@ li {
   width: 100%;
   height: 150px;
   padding: 1px 20px;
-  background-color: #323232;
+  border-radius: 10px;
 }
 
 .user {
-  color: white;
   font-size: 20px;
   margin: 10px 0;
 }
@@ -227,14 +213,23 @@ li {
 }
 
 .cancel {
-  color: white;
   text-align: end;
+  cursor: pointer;
+}
+
+.col-thr-title {
+  width: 70%;
 }
 
 @media screen and (min-width: 568px) {
   .search-box {
     margin: auto;
     padding: 0 20%;
+  }
+
+  .cont-post {
+    width: 400px;
+    margin: auto;
   }
 
   .row-game {
@@ -264,6 +259,43 @@ li {
 
   .menu-item {
     margin: 1.5rem 0;
+  }
+
+  .back-post {
+    margin: 2rem auto;
+    width: 90%;
+    background-color: #323232;
+    padding: 2rem 9%;
+    border-radius: 20px;
+  }
+
+  .row-thread-header {
+    width: 50%;
+    display: inline;
+  }
+
+  .post-background {
+    background-color: #212121;
+    width: 50%;
+    height: 200px;
+    border-radius: 20px;
+  }
+
+  .thread-cont {
+    display: flex;
+  }
+
+  .background-add {
+    top: 0;
+    display: flex;
+  }
+
+  .thread-icon {
+    display: inline-block;
+  }
+
+  .col-thr-title {
+    width: 100%;
   }
 }
 
@@ -320,5 +352,9 @@ li {
     margin: auto;
     width: 70%;
     padding: 0;
+  }
+
+  .back-post {
+    width: 70%;
   }
 }

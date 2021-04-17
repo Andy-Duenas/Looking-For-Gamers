@@ -105,6 +105,29 @@ app.post('/api/add/:gameId', (req, res) => {
     });
 });
 
+app.post('/api/discussion/:gameId', (req, res) => {
+  const gameId = req.params.gameId;
+  const { input } = req.body;
+  const userId = 1;
+  const sql = `
+    insert into "threadTracker" ("gameId", "message", "userId")
+    values ($1, $2, $3)
+    returning *
+  `;
+  const params = [gameId, input, userId];
+  db.query(sql, params)
+    .then(result => {
+      const [game] = result.rows;
+      res.status(201).json(game);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
+    });
+});
+
 app.delete('/api/remove/:gameId', (req, res) => {
   const gameId = req.params.gameId;
   const sql = `

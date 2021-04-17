@@ -16,10 +16,9 @@ create table "userInfo" (
 
 create table "threadTracker" (
   "gameId"       integer not null,
-  "title"        text not null unique,
   "message"      text not null,
-  "createdAt"   timestamptz(6) not null default now(),
-  primary key ("gameId")
+  "userId"       integer not null,
+  "createdAt"   timestamptz(6) not null default now()
 );
 
 create table "favorites" (

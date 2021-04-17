@@ -3,7 +3,7 @@ import React from 'react';
 export default class Drawer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isShowingModal: false, post: '' };
+    this.state = { isShowingModal: false, post: {} };
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,7 +23,23 @@ export default class Drawer extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.onSubmit({ post: this.state.game });
+    const post = {};
+    post.input = this.state.post;
+    const { gameId } = this.props;
+    fetch(`/api/discussion/${gameId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(post)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data) {
+          this.setState({ isShowingModal: false });
+        }
+      })
+      .catch(err => console.error(err));
     event.target.reset();
   }
 
@@ -47,7 +63,6 @@ export default class Drawer extends React.Component {
         </div>
           </div>
         </div>
-
       </>);
     }
     return (

@@ -110,6 +110,32 @@ p,
   font-family: 'Rubik', sans-serif;
 }
 
+.loading-icon {
+  color: white;
+}
+
+.thread-title {
+  color: white;
+  font-size: 20px;
+}
+
+.thread-icon {
+  font-size: 40px;
+  color: #14ffec;
+}
+
+.background-add {
+  background-color: rgba(17, 17, 16, 0.164);
+}
+
+.cont-post {
+  background-color: #323232;
+}
+
+.user {
+  color: white;
+}
+
 @media screen and (min-width: 568px) {
   .column-menu {
     font-size: 25px;
