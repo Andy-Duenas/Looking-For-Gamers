@@ -40,7 +40,8 @@
 .title-post,
 .heart-container,
 p,
-.menu-item {
+.menu-item,
+.user {
   color: white;
   font-family: 'karla', sans-serif;
 }

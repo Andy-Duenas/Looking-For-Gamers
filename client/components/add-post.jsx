@@ -50,7 +50,7 @@ export default class Drawer extends React.Component {
       <>
       <div className="background-add">
         <div className="cont-post">
-            <div className="user">userid</div>
+            <div className="user">TheLegend27</div>
             <form onSubmit={this.handleSubmit}>
           <div className ="row">
             <input type="text" onChange={this.handleChange} className="textbox-add" />
