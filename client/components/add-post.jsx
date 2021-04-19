@@ -37,6 +37,7 @@ export default class Drawer extends React.Component {
       .then(data => {
         if (data) {
           this.setState({ isShowingModal: false });
+          this.props.onSubmit();
         }
       })
       .catch(err => console.error(err));

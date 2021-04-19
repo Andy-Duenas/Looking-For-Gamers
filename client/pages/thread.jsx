@@ -1,12 +1,18 @@
 import React from 'react';
 import Addpost from '../components/add-post';
+import PostList from '../components/post-list';
+import getPosts from '../lib/get-posts';
+
 export default class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       game: {},
-      gotData: false
+      gotData: false,
+      results: [],
+      loaded: false
     };
+    this.update = this.update.bind(this);
   }
 
   componentDidMount() {
@@ -15,11 +21,16 @@ export default class Search extends React.Component {
       .then(res => res.json())
       .then(game => {
         const [data] = game;
-        this.setState({ game: data, gotData: true });
+        this.setState({ game: data, gotData: true, update: false });
       })
       .catch(err => {
         console.error(err);
       });
+  }
+
+  update() {
+    const test = getPosts(this.props.gameId);
+    test.then(results => this.setState({ results, loaded: true }));
   }
 
   render() {
@@ -43,10 +54,9 @@ export default class Search extends React.Component {
               <p className="thread-title">{name}</p>
               <p className="thread-total">Total Posts: PlaceHolder</p>
             </div>
-          <Addpost gameId={id}></Addpost>
+          <Addpost gameId={id} onSubmit={this.update}></Addpost>
         </div>
-        <div className="post-background">
-        </div>
+        <PostList gameId={id} results={this.state.results} loaded={this.state.loaded}></PostList>
         </div>
       </div>
     </div>
