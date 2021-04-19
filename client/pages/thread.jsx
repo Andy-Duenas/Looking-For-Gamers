@@ -56,7 +56,7 @@ export default class Search extends React.Component {
             </div>
           <Addpost gameId={id} onSubmit={this.update}></Addpost>
         </div>
-        <PostList gameId={id} isLoaded={this.state.loaded} onSubmit={this.update}></PostList>
+        <PostList gameId={id} isUpdating={this.state.loaded} onSubmit={this.update}></PostList>
         </div>
       </div>
     </div>

@@ -59,6 +59,27 @@ app.get('/api/check/:gameId', (req, res) => {
     });
 });
 
+app.get('/api/amount/:gameId', (req, res) => {
+  const gameId = req.params.gameId;
+  const sql = `
+    select count(*)
+    from "threadTracker"
+    where "gameId" = $1
+  `;
+  const params = [gameId];
+  db.query(sql, params)
+    .then(result => {
+      const [amount] = result.rows;
+      res.status(201).json(amount);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
+    });
+});
+
 app.get('/api/favorites', (req, res) => {
   const userId = 1;
   const sql = `

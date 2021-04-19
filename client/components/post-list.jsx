@@ -52,13 +52,18 @@ function SinglePost(props) {
     <div className="post-background">
       <div className="row-post">
         <div className="col-post">
-          <p>{props.userId}</p>
-          <p>{props.createdAt}</p>
+          <p className="post-user">TheLegend27</p>
+          <p className="post-date">{props.createdAt}</p>
         </div>
       </div>
       <div className="row-post">
         <div className="col-message">
-          <p>{props.message}</p>
+          <p className="post-message">{props.message}</p>
+        </div>
+      </div>
+      <div className="row-post">
+        <div className="col-reply">
+          <i className="fas fa-reply reply-icon"></i>
         </div>
       </div>
     </div>

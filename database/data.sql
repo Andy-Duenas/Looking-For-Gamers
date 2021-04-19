@@ -1,2 +1,2 @@
 insert into "userInfo" ("username","password")
-values ('Andy','12345')
+values ('TheLegend27','12345')

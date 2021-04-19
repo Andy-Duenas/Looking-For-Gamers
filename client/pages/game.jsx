@@ -1,5 +1,6 @@
 import React from 'react';
 import Heart from '../components/heart-icon';
+
 export default class Game extends React.Component {
   constructor(props) {
     super(props);

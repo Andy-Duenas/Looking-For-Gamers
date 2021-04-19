@@ -1,5 +1,6 @@
 import React from 'react';
 import List from '../components/game-list';
+import getAmount from '../lib/get-number-posts';
 
 export default class Search extends React.Component {
   constructor(props) {
@@ -16,6 +17,8 @@ export default class Search extends React.Component {
       .then(data => {
         if (!data.notInDb) {
           const newData = data.map(single => {
+            const test = getAmount(single.gameId);
+            test.then(results => results);
             const newObj = {};
             newObj.id = single.gameId;
             newObj.name = single.title;

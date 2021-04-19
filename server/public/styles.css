@@ -221,6 +221,31 @@ li {
   width: 70%;
 }
 
+.col-reply {
+  display: flex;
+  justify-content: flex-end;
+  color: white;
+}
+
+.post-background {
+  width: 80%;
+  background-color: #323232;
+  border-radius: 20px;
+  margin: 1rem auto;
+  padding: 10px;
+}
+
+.col-post {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-user,
+.post-date,
+.post-message {
+  margin: 4px;
+}
+
 @media screen and (min-width: 568px) {
   .search-box {
     margin: auto;
@@ -276,8 +301,7 @@ li {
 
   .post-background {
     background-color: #212121;
-    width: 50%;
-    height: 200px;
+    width: 300px;
     border-radius: 20px;
   }
 
@@ -297,19 +321,6 @@ li {
   .col-thr-title {
     width: 100%;
   }
-}
-
-.post-background {
-  width: 80%;
-  background-color: #323232;
-  border-radius: 20px;
-  margin: 1rem auto;
-  padding: 10px;
-}
-
-.col-post {
-  display: flex;
-  justify-content: space-between;
 }
 
 @media screen and (min-width: 1024px) {
