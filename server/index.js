@@ -59,6 +59,27 @@ app.get('/api/check/:gameId', (req, res) => {
     });
 });
 
+app.get('/api/amount/:gameId', (req, res) => {
+  const gameId = req.params.gameId;
+  const sql = `
+    select count(*)
+    from "threadTracker"
+    where "gameId" = $1
+  `;
+  const params = [gameId];
+  db.query(sql, params)
+    .then(result => {
+      const [amount] = result.rows;
+      res.status(201).json(amount);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
+    });
+});
+
 app.get('/api/favorites', (req, res) => {
   const userId = 1;
   const sql = `
@@ -83,6 +104,26 @@ app.get('/api/favorites', (req, res) => {
     });
 });
 
+app.get('/api/posts/:gameId', (req, res) => {
+  const gameId = req.params.gameId;
+  const sql = `
+    select *
+    from "threadTracker"
+    where "gameId" = $1
+  `;
+  const params = [gameId];
+  db.query(sql, params)
+    .then(result => {
+      res.status(201).json(result.rows);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
+    });
+});
+
 app.post('/api/add/:gameId', (req, res) => {
   const gameId = req.params.gameId;
   const { name, img, deck } = req.body;
@@ -92,6 +133,29 @@ app.post('/api/add/:gameId', (req, res) => {
     returning *
   `;
   const params = [gameId, name, img, deck];
+  db.query(sql, params)
+    .then(result => {
+      const [game] = result.rows;
+      res.status(201).json(game);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
+    });
+});
+
+app.post('/api/discussion/:gameId', (req, res) => {
+  const gameId = req.params.gameId;
+  const { input } = req.body;
+  const userId = 1;
+  const sql = `
+    insert into "threadTracker" ("gameId", "message", "userId")
+    values ($1, $2, $3)
+    returning *
+  `;
+  const params = [gameId, input, userId];
   db.query(sql, params)
     .then(result => {
       const [game] = result.rows;

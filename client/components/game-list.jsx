@@ -2,6 +2,7 @@ import React from 'react';
 import Heart from './heart-icon';
 
 export default function GameList(props) {
+
   return (
     <ul>
       {

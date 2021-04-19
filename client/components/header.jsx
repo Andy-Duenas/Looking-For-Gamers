@@ -13,6 +13,9 @@ export default class App extends React.Component {
     if (currentPage.path === 'favorites') {
       return 'Favorites';
     }
+    if (currentPage.path === 'thread') {
+      return 'Thread';
+    }
   }
 
   render() {
