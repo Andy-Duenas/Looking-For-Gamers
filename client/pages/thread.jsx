@@ -21,16 +21,16 @@ export default class Search extends React.Component {
       .then(res => res.json())
       .then(game => {
         const [data] = game;
-        this.setState({ game: data, gotData: true, update: false });
+        this.setState({ game: data, gotData: true });
       })
       .catch(err => {
         console.error(err);
       });
   }
 
-  update() {
+  update(hasUpdated) {
     const test = getPosts(this.props.gameId);
-    test.then(results => this.setState({ results, loaded: true }));
+    test.then(results => this.setState({ results, loaded: hasUpdated }));
   }
 
   render() {
@@ -56,7 +56,7 @@ export default class Search extends React.Component {
             </div>
           <Addpost gameId={id} onSubmit={this.update}></Addpost>
         </div>
-        <PostList gameId={id} results={this.state.results} loaded={this.state.loaded}></PostList>
+        <PostList gameId={id} isLoaded={this.state.loaded} onSubmit={this.update}></PostList>
         </div>
       </div>
     </div>

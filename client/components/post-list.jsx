@@ -5,7 +5,7 @@ export default class PostList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      result: [],
+      results: [],
       loaded: false
     };
   }
@@ -16,7 +16,8 @@ export default class PostList extends React.Component {
   }
 
   render() {
-    if (this.props.loaded) {
+    if (this.props.isUpdating) {
+      this.props.onSubmit(false);
       const test = getPosts(this.props.gameId);
       test.then(results => this.setState({ results, loaded: true }));
     }
@@ -32,7 +33,7 @@ export default class PostList extends React.Component {
               key={single.createdAt}
               message={single.message}
               userId={single.userId}
-              createdAt={single.createdAt}
+              createdAt={single.created}
             />
           );
         })
