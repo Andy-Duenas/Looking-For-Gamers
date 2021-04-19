@@ -148,6 +148,14 @@ p,
     font-size: 30px;
   }
 
+  .thread-title {
+    font-size: 30px;
+  }
+
+  .thread-total {
+    font-size: 20px;
+  }
+
   #game-container {
     background-color: #323232;
   }
