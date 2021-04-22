@@ -23,6 +23,8 @@ Link to demo: https://looking-for-gamers.herokuapp.com/
 * User can sign up.
 * User can sign in.
 * User can reply to a post.
+* User display the top threads.
+* User can message another user.
 
 ## GIF
 ![Ex](https://user-images.githubusercontent.com/54919527/115631808-64e14100-a2bb-11eb-9d17-c26fcfa51270.gif)
