@@ -10,7 +10,8 @@ export default class Search extends React.Component {
       game: {},
       gotData: false,
       results: [],
-      loaded: false
+      loaded: false,
+      posts: 0
     };
     this.update = this.update.bind(this);
   }
@@ -26,15 +27,34 @@ export default class Search extends React.Component {
       .catch(err => {
         console.error(err);
       });
+
+    fetch(`/api/amount/${gameId}`)
+      .then(res => res.json())
+      .then(num => {
+        this.setState({ posts: num.count });
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   update(hasUpdated) {
     const test = getPosts(this.props.gameId);
+    const { gameId } = this.props;
     test.then(results => this.setState({ results, loaded: hasUpdated }));
+    fetch(`/api/amount/${gameId}`)
+      .then(res => res.json())
+      .then(num => {
+        this.setState({ posts: num.count });
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   render() {
     const { name, id } = this.state.game;
+    const { posts } = this.state;
     if (this.state.gotData === false) {
       return <h1 className="row"><i className="fas fa-dragon loading-icon"></i></h1>;
     } else {
@@ -52,7 +72,7 @@ export default class Search extends React.Component {
           <div className="row-thread-header">
             <div className="col-thr-title">
               <p className="thread-title">{name}</p>
-              <p className="thread-total">Total Posts: PlaceHolder</p>
+              <p className="thread-total">Total Posts: {posts}</p>
             </div>
           <Addpost gameId={id} onSubmit={this.update}></Addpost>
         </div>
