@@ -22,10 +22,27 @@ export default function GameList(props) {
   );
 }
 
-function SingleGame(props) {
-  const { gameid, img, name, deck } = props;
+class SingleGame extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { posts: null };
+  }
 
-  return (
+  componentDidMount() {
+    const gameId = this.props.gameid;
+    fetch(`/api/amount/${gameId}`)
+      .then(res => res.json())
+      .then(num => {
+        this.setState({ posts: num.count });
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
+  render() {
+    const { gameid, img, name, deck } = this.props;
+    return (
     <>
        <div className="row-game">
        <a href={'#game?gameId=' + gameid}>
@@ -34,11 +51,12 @@ function SingleGame(props) {
        </div>
        <div className="title-post">
           <p>{name}</p>
-        <p>Total Posts: place holder</p>
+        <p>Total Posts: {this.state.posts}</p>
         </div>
       </a>
         <Heart gameId={gameid} game={{ name, deck, img }}/>
     </div>
     </>
-  );
+    );
+  }
 }

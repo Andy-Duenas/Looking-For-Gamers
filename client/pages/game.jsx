@@ -6,7 +6,8 @@ export default class Game extends React.Component {
     super(props);
     this.state = {
       game: {},
-      gotData: false
+      gotData: false,
+      posts: 0
     };
   }
 
@@ -20,13 +21,22 @@ export default class Game extends React.Component {
       .catch(err => {
         console.error(err);
       });
+
+    fetch(`/api/amount/${gameId}`)
+      .then(res => res.json())
+      .then(num => {
+        this.setState({ posts: num.count });
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   render() {
     if (this.state.gotData === false) {
       return <h1 className="row"><i className="fas fa-dragon loading-icon"></i></h1>;
     } else {
-      const game = this.state.game;
+      const { game, posts } = this.state;
       const { name, deck, id } = game[0];
       const img = game[0].image.super_url;
       return (
@@ -51,7 +61,7 @@ export default class Game extends React.Component {
           </div>
           <div className="row">
             <div className="col-posts">
-            <p>Total Post: Placeholder</p>
+            <p>Total Post: {posts} </p>
             </div>
           </div>
           <div className="row">
