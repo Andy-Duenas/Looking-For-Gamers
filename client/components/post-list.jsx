@@ -1,18 +1,22 @@
 import React from 'react';
 import getPosts from '../lib/get-posts';
+import AddReply from '../components/add-reply';
+import getReplies from '../lib/get-replies';
+import ReplyList from '../components/post-reply';
 
 export default class PostList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       results: [],
-      loaded: false
+      loaded: false,
+      replies: []
     };
   }
 
   componentDidMount() {
-    const test = getPosts(this.props.gameId);
-    test.then(results => this.setState({ results, loaded: true }));
+    const posts = getPosts(this.props.gameId);
+    posts.then(results => this.setState({ results, loaded: true }));
   }
 
   render() {
@@ -34,6 +38,7 @@ export default class PostList extends React.Component {
               message={single.message}
               userId={single.userId}
               createdAt={single.created}
+              postId={single.postId}
             />
           );
         })
@@ -46,27 +51,46 @@ export default class PostList extends React.Component {
   }
 }
 
-function SinglePost(props) {
-  return (
+class SinglePost extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loaded: false,
+      replies: []
+    };
+  }
+
+  componentDidMount() {
+    const reply = getReplies(this.props.postId);
+    reply.then(replies => this.setState({ replies, loaded: true }));
+  }
+
+  render() {
+    const { replies, loaded } = this.state;
+    if (loaded) {
+      return (
     <>
     <div className="post-background">
       <div className="row-post">
         <div className="col-post">
           <p className="post-user">TheLegend27</p>
-          <p className="post-date">{props.createdAt}</p>
+          <p className="post-date">{this.props.createdAt}</p>
         </div>
       </div>
       <div className="row-post">
         <div className="col-message">
-          <p className="post-message">{props.message}</p>
+          <p className="post-message">{this.props.message}</p>
         </div>
       </div>
       <div className="row-post">
-        <div className="col-reply">
-          <i className="fas fa-reply reply-icon"></i>
-        </div>
+          <AddReply postId={this.props.postId}></AddReply>
       </div>
     </div>
+        <ReplyList replies={replies} />
     </>
-  );
+      );
+    } else {
+      return <h1 className="row"><i className="fas fa-dragon loading-icon"></i></h1>;
+    }
+  }
 }

@@ -124,6 +124,26 @@ app.get('/api/posts/:gameId', (req, res) => {
     });
 });
 
+app.get('/api/replies/:postId', (req, res) => {
+  const postId = req.params.postId;
+  const sql = `
+    select *
+    from "threadTracker"
+    where "postId" = $1
+  `;
+  const params = [postId];
+  db.query(sql, params)
+    .then(result => {
+      res.status(201).json(result.rows);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
+    });
+});
+
 app.post('/api/add/:gameId', (req, res) => {
   const gameId = req.params.gameId;
   const { name, img, deck } = req.body;
@@ -156,6 +176,29 @@ app.post('/api/discussion/:gameId', (req, res) => {
     returning *
   `;
   const params = [gameId, input, userId];
+  db.query(sql, params)
+    .then(result => {
+      const [game] = result.rows;
+      res.status(201).json(game);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
+    });
+});
+
+app.post('/api/discussion/reply/:postId', (req, res) => {
+  const postId = req.params.postId;
+  const { input } = req.body;
+  const userId = 1;
+  const sql = `
+    insert into "threadTracker" ("postId", "message", "userId")
+    values ($1, $2, $3)
+    returning *
+  `;
+  const params = [postId, input, userId];
   db.query(sql, params)
     .then(result => {
       const [game] = result.rows;
