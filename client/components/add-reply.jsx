@@ -48,7 +48,7 @@ export default class Drawer extends React.Component {
     if (this.state.isShowingModal) {
       return (
         <>
-          <div className="background-add">
+          <div className="background-reply">
             <div className="cont-post">
               <div className="user">TheLegend27</div>
               <form onSubmit={this.handleSubmit}>
