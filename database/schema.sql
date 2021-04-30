@@ -15,10 +15,12 @@ create table "userInfo" (
 );
 
 create table "threadTracker" (
-  "gameId"       integer not null,
+  "postId"       serial,
+  "gameId"       integer,
   "message"      text not null,
   "userId"       integer not null,
-  "createdAt"   timestamptz(6) not null default now()
+  "replyTo"      integer,
+  "createdAt"    timestamptz(6) not null default now()
 );
 
 create table "favorites" (

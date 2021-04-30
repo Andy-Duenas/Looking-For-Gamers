@@ -1,31 +1,35 @@
 import React from 'react';
 import getPosts from '../lib/get-posts';
+import AddReply from '../components/add-reply';
+import getReplies from '../lib/get-replies';
+import ReplyList from '../components/post-reply';
 
 export default class PostList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       results: [],
-      loaded: false
+      loaded: false,
+      replies: []
     };
   }
 
   componentDidMount() {
-    const test = getPosts(this.props.gameId);
-    test.then(results => this.setState({ results, loaded: true }));
+    const posts = getPosts(this.props.gameId);
+    posts.then(results => this.setState({ results, loaded: true }));
   }
 
   render() {
     if (this.props.isUpdating) {
       this.props.onSubmit(false);
-      const test = getPosts(this.props.gameId);
-      test.then(results => this.setState({ results, loaded: true }));
+      const posts = getPosts(this.props.gameId);
+      posts.then(results => this.setState({ results, loaded: true }));
     }
     const { loaded } = this.state;
     const { results } = this.state;
     if (loaded) {
       return (
-    <ul>
+    <ul className="thread-list">
       {
         results.map(single => {
           return (
@@ -34,6 +38,7 @@ export default class PostList extends React.Component {
               message={single.message}
               userId={single.userId}
               createdAt={single.created}
+              postId={single.postId}
             />
           );
         })
@@ -46,27 +51,52 @@ export default class PostList extends React.Component {
   }
 }
 
-function SinglePost(props) {
-  return (
-    <>
+class SinglePost extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loaded: false,
+      replies: []
+    };
+    this.isUpdating = this.isUpdating.bind(this);
+  }
+
+  componentDidMount() {
+    const reply = getReplies(this.props.postId);
+    reply.then(replies => this.setState({ replies, loaded: true }));
+  }
+
+  isUpdating(postId) {
+    const reply = getReplies(postId);
+    reply.then(replies => this.setState({ replies }));
+  }
+
+  render() {
+    const { replies, loaded } = this.state;
+    if (loaded) {
+      return (
+   <>
     <div className="post-background">
       <div className="row-post">
         <div className="col-post">
           <p className="post-user">TheLegend27</p>
-          <p className="post-date">{props.createdAt}</p>
+          <p className="post-date">{this.props.createdAt}</p>
         </div>
       </div>
       <div className="row-post">
         <div className="col-message">
-          <p className="post-message">{props.message}</p>
+          <p className="post-message">{this.props.message}</p>
         </div>
       </div>
       <div className="row-post">
-        <div className="col-reply">
-          <i className="fas fa-reply reply-icon"></i>
-        </div>
+          <AddReply postId={this.props.postId} isUpdating={this.isUpdating}></AddReply>
       </div>
     </div>
-    </>
-  );
+    <ReplyList replies={replies} />
+  </>
+      );
+    } else {
+      return <h1 className="row"><i className="fas fa-dragon loading-icon"></i></h1>;
+    }
+  }
 }

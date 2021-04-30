@@ -25,8 +25,6 @@ export default class Drawer extends React.Component {
             <a href="#favorites">
               <h3 className="menu-item" onClick={this.handleClick}>Favorites</h3>
             </a>
-            <h3 className="menu-item">Top Threads</h3>
-            <h3 className="menu-item">Messages</h3>
             <a href="#search">
               <h3 className="menu-item" onClick={this.handleClick}>Search</h3>
             </a>
