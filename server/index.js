@@ -129,7 +129,7 @@ app.get('/api/replies/:postId', (req, res) => {
   const sql = `
     select *
     from "threadTracker"
-    where "postId" = $1
+    where "replyTo" = $1
   `;
   const params = [postId];
   db.query(sql, params)
@@ -194,11 +194,11 @@ app.post('/api/discussion/reply/:postId', (req, res) => {
   const { input } = req.body;
   const userId = 1;
   const sql = `
-    insert into "threadTracker" ("postId", "message", "userId")
-    values ($1, $2, $3)
+    insert into "threadTracker" ("postId", "message", "userId", "replyTo")
+    values ($1, $2, $3, $4)
     returning *
   `;
-  const params = [postId, input, userId];
+  const params = [postId, input, userId, postId];
   db.query(sql, params)
     .then(result => {
       const [game] = result.rows;

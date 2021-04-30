@@ -22,14 +22,14 @@ export default class PostList extends React.Component {
   render() {
     if (this.props.isUpdating) {
       this.props.onSubmit(false);
-      const test = getPosts(this.props.gameId);
-      test.then(results => this.setState({ results, loaded: true }));
+      const posts = getPosts(this.props.gameId);
+      posts.then(results => this.setState({ results, loaded: true }));
     }
     const { loaded } = this.state;
     const { results } = this.state;
     if (loaded) {
       return (
-    <ul>
+    <ul className="thread-list">
       {
         results.map(single => {
           return (
@@ -58,6 +58,7 @@ class SinglePost extends React.Component {
       loaded: false,
       replies: []
     };
+    this.isUpdating = this.isUpdating.bind(this);
   }
 
   componentDidMount() {
@@ -65,11 +66,16 @@ class SinglePost extends React.Component {
     reply.then(replies => this.setState({ replies, loaded: true }));
   }
 
+  isUpdating(postId) {
+    const reply = getReplies(postId);
+    reply.then(replies => this.setState({ replies }));
+  }
+
   render() {
     const { replies, loaded } = this.state;
     if (loaded) {
       return (
-    <>
+   <>
     <div className="post-background">
       <div className="row-post">
         <div className="col-post">
@@ -83,11 +89,11 @@ class SinglePost extends React.Component {
         </div>
       </div>
       <div className="row-post">
-          <AddReply postId={this.props.postId}></AddReply>
+          <AddReply postId={this.props.postId} isUpdating={this.isUpdating}></AddReply>
       </div>
     </div>
-        <ReplyList replies={replies} />
-    </>
+    <ReplyList replies={replies} />
+  </>
       );
     } else {
       return <h1 className="row"><i className="fas fa-dragon loading-icon"></i></h1>;

@@ -35,6 +35,7 @@ export default class Drawer extends React.Component {
     })
       .then(res => res.json())
       .then(data => {
+        this.props.isUpdating(postId);
         if (data) {
           this.setState({ isShowingModal: false });
         }
