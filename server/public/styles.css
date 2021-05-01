@@ -281,6 +281,7 @@ li {
   .cont-post {
     width: 400px;
     margin: auto;
+    padding-left: 0;
   }
 
   .row-game {
@@ -334,7 +335,7 @@ li {
   }
 
   .background-add {
-    top: 0;
+    position: relative;
     display: flex;
   }
 
