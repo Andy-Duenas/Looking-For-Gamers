@@ -27,5 +27,8 @@ Link to demo: https://looking-for-gamers.herokuapp.com/
 * User can message another user.
 
 ## GIF
-![Ex](https://user-images.githubusercontent.com/54919527/115631808-64e14100-a2bb-11eb-9d17-c26fcfa51270.gif)
+
+https://user-images.githubusercontent.com/54919527/116922850-c1712400-ac0a-11eb-907d-c3276df7dfcf.mp4
+
+
 
