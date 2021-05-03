@@ -18,11 +18,11 @@ Link to demo: https://looking-for-gamers.herokuapp.com/
 * User can remove a game from their favorites list.
 * User can see a description of a game.
 * User can post on a games thread.
+* User can reply to a post.
 
 ## Features to implement 
 * User can sign up.
 * User can sign in.
-* User can reply to a post.
 * User display the top threads.
 * User can message another user.
 
