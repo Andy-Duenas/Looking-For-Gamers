@@ -28,7 +28,8 @@ Link to demo: https://looking-for-gamers.herokuapp.com/
 
 ## GIF
 
-https://user-images.githubusercontent.com/54919527/116922850-c1712400-ac0a-11eb-907d-c3276df7dfcf.mp4
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/54919527/116923146-1dd44380-ac0b-11eb-90dd-e452d8315548.gif)
+
 
 
 
