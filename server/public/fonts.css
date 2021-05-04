@@ -41,7 +41,9 @@
 .heart-container,
 p,
 .menu-item,
-.user {
+.user,
+.search-for-games,
+.click-on-post {
   color: white;
   font-family: 'karla', sans-serif;
 }

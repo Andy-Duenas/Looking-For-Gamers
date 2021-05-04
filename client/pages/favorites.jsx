@@ -32,8 +32,9 @@ export default class Search extends React.Component {
 
   render() {
     if (this.state.loaded === false) {
-      return <h1 className="row"><i className="fas fa-dragon loading-icon"></i></h1>;
-    } else {
+      return <a href="#search"><h2 className="search-for-games">Your favorite list is empty.</h2>
+      <h2 className="search-for-games">Click here to search for games.</h2></a>;
+    } else if (this.state.gameList.length > 0 && this.state.loaded === true) {
       return (
         <div className="background">
         <List games={this.state.gameList}></List>

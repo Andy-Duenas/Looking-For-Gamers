@@ -27,7 +27,7 @@ export default class PostList extends React.Component {
     }
     const { loaded } = this.state;
     const { results } = this.state;
-    if (loaded) {
+    if (loaded && results.length > 0) {
       return (
     <ul className="thread-list">
       {
@@ -46,7 +46,7 @@ export default class PostList extends React.Component {
     </ul>
       );
     } else {
-      return <h1 className="row"><i className="fas fa-dragon loading-icon"></i></h1>;
+      return <h1 className="click-on-post">Click on the Add icon to make a post</h1>;
     }
   }
 }

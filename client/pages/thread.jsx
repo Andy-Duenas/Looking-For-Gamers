@@ -63,7 +63,7 @@ export default class Search extends React.Component {
       <div className="back-post">
         <div className="row-thread-back">
           <div className="back-arrow">
-            <a href="#favorites">
+                <a href={'#game?gameId=' + id}>
              <i className="fas fa-arrow-left arrow-icon" ></i>
             </a>
           </div>

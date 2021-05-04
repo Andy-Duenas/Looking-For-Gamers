@@ -216,6 +216,8 @@ li {
 }
 
 .cancel {
+  margin-left: 2rem;
+  align-self: flex-end;
   text-align: end;
   cursor: pointer;
 }
@@ -263,6 +265,16 @@ li {
   align-items: flex-end;
   display: flex;
   flex-direction: column;
+}
+
+.search-for-games {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.click-on-post {
+  text-align: center;
+  color: white;
 }
 
 @media screen and (min-width: 736px) {

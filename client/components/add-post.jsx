@@ -48,20 +48,20 @@ export default class Drawer extends React.Component {
     if (this.state.isShowingModal) {
       return (
       <>
-      <div className="background-add">
-        <div className="cont-post">
+        <div className="background-add">
+          <div className="cont-post">
             <div className="user">TheLegend27</div>
             <form onSubmit={this.handleSubmit}>
-          <div className ="row">
-            <input type="text" onChange={this.handleChange} className="textbox-add" />
-          </div>
-          <div className="row post-container">
-            <input type="submit" value="Post" className="post-button"/>
-          </div>
-        </form>
-        <div className="cancel">
-        <span onClick={this.handleClick}>Cancel</span>
-        </div>
+              <div className ="row">
+                <input type="text" onChange={this.handleChange} className="textbox-add" />
+               </div>
+               <div className="row post-container">
+                <input type="submit" value="Post" className="post-button"/>
+               <div className="cancel">
+                <span onClick={this.handleClick}>Cancel</span>
+               </div>
+              </div>
+            </form>
           </div>
         </div>
       </>);
