@@ -41,12 +41,10 @@ export default class Game extends React.Component {
       const img = game[0].image.super_url;
       return (
       <div className="game-container" id="game-container">
-        <div className="row">
           <div className="back-arrow">
           <a href="#search">
           <i className="fas fa-arrow-left arrow-icon" ></i>
           </a>
-        </div>
         </div>
         <div className="row">
           <div className="img-cont">

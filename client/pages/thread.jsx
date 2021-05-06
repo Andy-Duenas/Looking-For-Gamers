@@ -54,7 +54,6 @@ export default class Search extends React.Component {
 
   render() {
     const { name, id } = this.state.game;
-    const { posts } = this.state;
     if (this.state.gotData === false) {
       return <h1 className="row"><i className="fas fa-dragon loading-icon"></i></h1>;
     } else {
@@ -67,16 +66,15 @@ export default class Search extends React.Component {
              <i className="fas fa-arrow-left arrow-icon" ></i>
             </a>
           </div>
+            <div className="col-thr-title">
+              <p className="thread-title">{name}</p>
+            </div>
         </div>
         <div className="thread-cont">
           <div className="row-thread-header">
-            <div className="col-thr-title">
-              <p className="thread-title">{name}</p>
-              <p className="thread-total">Total Posts: {posts}</p>
-            </div>
-          <Addpost gameId={id} onSubmit={this.update}></Addpost>
+          <PostList gameId={id} isUpdating={this.state.loaded} onSubmit={this.update}></PostList>
         </div>
-        <PostList gameId={id} isUpdating={this.state.loaded} onSubmit={this.update}></PostList>
+        <Addpost gameId={id} onSubmit={this.update}></Addpost>
         </div>
       </div>
     </div>

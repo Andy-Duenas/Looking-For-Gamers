@@ -46,7 +46,7 @@ export default class PostList extends React.Component {
     </ul>
       );
     } else {
-      return <h1 className="click-on-post">Click on the Add icon to make a post</h1>;
+      return <h3 className="click-on-post">Be the first to make a post!</h3>;
     }
   }
 }
