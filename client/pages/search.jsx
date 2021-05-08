@@ -21,13 +21,25 @@ export default class Search extends React.Component {
   }
 
   render() {
-    return (
+    const { searchFor } = this.state;
+    if (searchFor.length === 0) {
+      return (
+        <>
+        <SearchBox onSubmit={this.makeGameList} />
+        <div className="background">
+          <h1 className="search-for-games">Enter a title of a game to start searching.</h1>
+        </div>
+        </>
+      );
+    } else {
+      return (
       <>
         <SearchBox onSubmit={this.makeGameList} />
         <div className="background">
         <List games={this.state.searchFor}></List>
         </div>
       </>
-    );
+      );
+    }
   }
 }

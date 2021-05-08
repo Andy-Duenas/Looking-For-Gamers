@@ -278,6 +278,24 @@ li {
   color: white;
 }
 
+.game-title {
+  margin: 0;
+  color: #14ffec;
+  font-family:
+    'Rubik',
+    sans-serif;
+}
+
+.game-title-container {
+  padding: 0.5rem;
+  text-align: center;
+  background-color: #323232;
+}
+
+.background-color {
+  width: 100%;
+}
+
 @media screen and (min-width: 736px) {
   .thread-list {
     padding: 10px;
@@ -428,6 +446,12 @@ li {
   }
 
   .back-post {
+    width: 70%;
+  }
+
+  .game-title-container {
+    margin: auto;
+    text-align: left;
     width: 70%;
   }
 }
