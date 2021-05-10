@@ -6,22 +6,64 @@ export default class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchFor: []
+      searchFor: [],
+      tryAgain: false,
+      isConnected: true,
+      isLoading: false
     };
     this.makeGameList = this.makeGameList.bind(this);
   }
 
   makeGameList(data) {
+    this.setState({ isLoading: true });
     fetch(`/api/search/${data.game}`)
       .then(res => res.json())
       .then(data => {
-        this.setState({ searchFor: data });
+        if (data.length === 0) {
+          this.setState({ tryAgain: true, isLoading: false });
+        } else {
+          this.setState({ searchFor: data, tryAgain: false, isConnected: true, isLoading: false });
+        }
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+        this.setState({ isConnected: false });
+      });
   }
 
   render() {
-    const { searchFor } = this.state;
+    const { searchFor, tryAgain, isConnected, isLoading } = this.state;
+
+    if (isLoading) {
+      return (
+        <>
+        <SearchBox onSubmit={this.makeGameList} />
+        <div className="background">
+           <h1 className="row"><i className="fas fa-dragon loading-icon"></i></h1>;
+        </div>
+        </>
+      );
+    }
+    if (tryAgain && isConnected) {
+      return (
+        <>
+        <SearchBox onSubmit={this.makeGameList} />
+        <div className="background">
+          <h1 className="search-for-games">Search Failed. Please enter another name.</h1>
+        </div>
+        </>
+      );
+    }
+    if (!isConnected) {
+      return (
+        <>
+        <SearchBox onSubmit={this.makeGameList} />
+        <div className="background">
+          <h1 className="search-for-games">Lost Connection. Please try again.</h1>
+        </div>
+        </>
+      );
+    }
     if (searchFor.length === 0) {
       return (
         <>

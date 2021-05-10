@@ -184,6 +184,15 @@ li {
 .loading-icon {
   margin-top: 2rem;
   text-align: center;
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .row-thread-header {
