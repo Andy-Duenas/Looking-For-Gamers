@@ -135,6 +135,11 @@ li {
 .icon {
   margin: 1rem;
   font-size: 25px;
+  transition: 0.2s ease-in-out;
+}
+
+.icon:hover {
+  font-size: 35px;
 }
 
 .cont {
@@ -158,6 +163,12 @@ li {
 
 .menu-item {
   margin: 0.5rem 0;
+  transition: 0.2s ease-in-out;
+}
+
+.menu-item:hover {
+  color: #14ffec;
+  font-size: 30px;
 }
 
 .grey-screen {
