@@ -37,7 +37,6 @@
 
 .search-button:hover {
   background-color: #14ffec;
-  font-size: 16px;
 }
 
 .row-game {
@@ -67,6 +66,12 @@ p,
 .arrow-icon,
 .heart-icon {
   font-size: 30px;
+  transition: 0.2s ease-in-out;
+}
+
+.arrow-icon:hover,
+.heart-icon:hover {
+  color: #14ffec;
 }
 
 .single-title {
@@ -132,6 +137,11 @@ p,
 .thread-icon {
   font-size: 40px;
   color: #14ffec;
+  transition: 0.2s ease-in-out;
+}
+
+.thread-icon:hover {
+  transform: rotate(360deg);
 }
 
 .background-add {

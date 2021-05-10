@@ -124,6 +124,11 @@ a {
 
 .enter-button {
   margin: 1rem 0;
+  transition: 0.2s ease-in-out;
+}
+
+.enter-button:hover {
+  background-color: #14ffec;
 }
 
 ul,
@@ -237,6 +242,11 @@ li {
   display: flex;
   justify-content: flex-end;
   color: white;
+  transition: 0.2s ease-in-out;
+}
+
+.col-reply:hover {
+  color: #14ffec;
 }
 
 .post-background {
@@ -322,12 +332,16 @@ li {
 
   .cont-post {
     margin: auto;
-    padding-left: 0;
   }
 
   .row-game {
     width: 80%;
     margin: 1rem auto;
+    transition: 0.3s ease-in-out;
+  }
+
+  .row-game:hover {
+    width: 81%;
   }
 
   .col-title,
@@ -425,6 +439,11 @@ li {
     width: 40%;
     margin: 1rem auto;
     height: 150px;
+  }
+
+  .row-game:hover {
+    width: 42%;
+    height: 151px;
   }
 
   .game-container {
