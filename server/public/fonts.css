@@ -5,6 +5,7 @@
 }
 
 .header,
+.background-color,
 .search-box {
   background-color: #323232;
 }
@@ -31,6 +32,11 @@
   border-width: 0;
   font-size: 15px;
   padding: 3px 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.search-button:hover {
+  background-color: #14ffec;
 }
 
 .row-game {
@@ -60,10 +66,16 @@ p,
 .arrow-icon,
 .heart-icon {
   font-size: 30px;
+  transition: 0.2s ease-in-out;
+}
+
+.arrow-icon:hover,
+.heart-icon:hover {
+  color: #14ffec;
 }
 
 .single-title {
-  font-size: 20px;
+  font-size: 23px;
 }
 
 .enter-button {
@@ -119,12 +131,17 @@ p,
 
 .thread-title {
   color: white;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .thread-icon {
   font-size: 40px;
   color: #14ffec;
+  transition: 0.2s ease-in-out;
+}
+
+.thread-icon:hover {
+  transform: rotate(360deg);
 }
 
 .background-add {
@@ -151,7 +168,7 @@ p,
   }
 
   .thread-title {
-    font-size: 30px;
+    font-size: 35px;
   }
 
   .thread-total {
@@ -160,5 +177,13 @@ p,
 
   #game-container {
     background-color: #323232;
+  }
+
+  .arrow-icon {
+    margin: 1rem 0;
+  }
+
+  .back-arrow {
+    margin: 0;
   }
 }

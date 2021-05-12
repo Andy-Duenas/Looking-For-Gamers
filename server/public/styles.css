@@ -118,13 +118,17 @@ a {
 }
 
 .back-arrow {
-  width: 100%;
   margin: 1rem 0;
   padding-left: 5%;
 }
 
 .enter-button {
   margin: 1rem 0;
+  transition: 0.2s ease-in-out;
+}
+
+.enter-button:hover {
+  background-color: #14ffec;
 }
 
 ul,
@@ -136,6 +140,11 @@ li {
 .icon {
   margin: 1rem;
   font-size: 25px;
+  transition: 0.2s ease-in-out;
+}
+
+.icon:hover {
+  font-size: 35px;
 }
 
 .cont {
@@ -159,6 +168,12 @@ li {
 
 .menu-item {
   margin: 0.5rem 0;
+  transition: 0.2s ease-in-out;
+}
+
+.menu-item:hover {
+  color: #14ffec;
+  font-size: 30px;
 }
 
 .grey-screen {
@@ -169,19 +184,24 @@ li {
 .loading-icon {
   margin-top: 2rem;
   text-align: center;
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .row-thread-header {
-  display: flex;
-  width: 100%;
-  padding-left: 10px;
+  text-align: center;
 }
 
 .thread-icon {
-  align-items: center;
-  width: 20%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .background-add {
@@ -223,13 +243,19 @@ li {
 }
 
 .col-thr-title {
-  width: 70%;
+  align-self: center;
+  text-align: center;
 }
 
 .col-reply {
   display: flex;
   justify-content: flex-end;
   color: white;
+  transition: 0.2s ease-in-out;
+}
+
+.col-reply:hover {
+  color: #14ffec;
 }
 
 .post-background {
@@ -250,6 +276,10 @@ li {
   margin: 4px;
 }
 
+.post-message {
+  text-align: left;
+}
+
 .reply-background {
   background-color: #323232;
   border-radius: 20px;
@@ -258,7 +288,7 @@ li {
 
 .reply-list {
   margin-bottom: 1rem;
-  width: 70%;
+  width: 80%;
 }
 
 .thread-list {
@@ -274,13 +304,32 @@ li {
 
 .click-on-post {
   text-align: center;
+  margin: 4rem 0;
   color: white;
+}
+
+.game-title {
+  margin: 0;
+  color: #14ffec;
+  font-family:
+    'Rubik',
+    sans-serif;
+}
+
+.game-title-container {
+  padding: 0.5rem;
+  text-align: center;
+  background-color: #323232;
+}
+
+.background-color {
+  width: 100%;
 }
 
 @media screen and (min-width: 736px) {
   .thread-list {
     padding: 10px;
-    width: 60%;
+    width: 100%;
     background-color: #212121;
     border-radius: 20px;
   }
@@ -292,12 +341,16 @@ li {
 
   .cont-post {
     margin: auto;
-    padding-left: 0;
   }
 
   .row-game {
     width: 80%;
     margin: 1rem auto;
+    transition: 0.3s ease-in-out;
+  }
+
+  .row-game:hover {
+    width: 81%;
   }
 
   .col-title,
@@ -338,10 +391,20 @@ li {
   }
 
   .post-background {
+    width: 40%;
     border-radius: 20px;
   }
 
   .thread-cont {
+    text-align: center;
+  }
+
+  .thread-title {
+    margin: 0;
+  }
+
+  .row-thread-back {
+    text-align: center;
     display: flex;
   }
 
@@ -352,10 +415,16 @@ li {
 
   .thread-icon {
     display: inline-block;
+    margin-top: 3rem;
   }
 
   .col-thr-title {
     width: 100%;
+  }
+
+  .reply-list {
+    margin-bottom: 1rem;
+    width: 30%;
   }
 }
 
@@ -379,6 +448,11 @@ li {
     width: 40%;
     margin: 1rem auto;
     height: 150px;
+  }
+
+  .row-game:hover {
+    width: 42%;
+    height: 151px;
   }
 
   .game-container {
@@ -411,6 +485,12 @@ li {
   }
 
   .back-post {
+    width: 70%;
+  }
+
+  .game-title-container {
+    margin: auto;
+    text-align: left;
     width: 70%;
   }
 }

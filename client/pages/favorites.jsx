@@ -37,7 +37,7 @@ export default class Search extends React.Component {
     } else if (this.state.gameList.length > 0 && this.state.loaded === true) {
       return (
         <div className="background">
-        <List games={this.state.gameList}></List>
+          <List games={this.state.gameList}></List>
         </div>
       );
     }

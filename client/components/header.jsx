@@ -21,6 +21,9 @@ export default class App extends React.Component {
   render() {
     return (
       <>
+        <div className="background-color">
+         <div className="game-title-container"><h2 className="game-title">Looking For Gamers</h2></div>
+        </div>
         <div className="row header">
           <div className="menu-container">
            <Menu></Menu>
