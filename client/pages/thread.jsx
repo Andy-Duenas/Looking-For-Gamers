@@ -62,7 +62,7 @@ export default class Search extends React.Component {
       <div className="back-post">
         <div className="row-thread-back">
           <div className="back-arrow">
-                <a href={'#game?gameId=' + id}>
+                <a href={this.props.gameSearch === null ? '#game?gameId=' + id : '#game?gameId=' + id + '&gameSearch=' + this.props.gameSearch }>
              <i className="fas fa-arrow-left arrow-icon" ></i>
             </a>
           </div>

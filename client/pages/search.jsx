@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBox from '../components/searchbox';
 import List from '../components/game-list';
+import ParseRoute from '../lib/parse-route';
 
 export default class Search extends React.Component {
   constructor(props) {
@@ -9,13 +10,15 @@ export default class Search extends React.Component {
       searchFor: [],
       tryAgain: false,
       isConnected: true,
-      isLoading: false
+      isLoading: false,
+      route: ParseRoute(window.location.hash),
+      gameName: null
     };
     this.makeGameList = this.makeGameList.bind(this);
   }
 
   makeGameList(data) {
-    this.setState({ isLoading: true });
+    this.setState({ isLoading: true, gameName: data });
     fetch(`/api/search/${data.game}`)
       .then(res => res.json())
       .then(data => {
@@ -31,9 +34,19 @@ export default class Search extends React.Component {
       });
   }
 
+  componentDidMount() {
+    const { route } = this.state;
+    let search = route.params.get('game');
+    if (search !== null) {
+      search = search.replace(/[^a-zA-Z0-9]/g, ' ');
+      search = search.split(' ');
+      const game = { game: search[0] };
+      this.makeGameList(game);
+    }
+  }
+
   render() {
     const { searchFor, tryAgain, isConnected, isLoading } = this.state;
-
     if (isLoading) {
       return (
         <>
@@ -76,9 +89,9 @@ export default class Search extends React.Component {
     } else {
       return (
       <>
-        <SearchBox onSubmit={this.makeGameList} />
+        <SearchBox onSubmit={this.makeGameList}/>
         <div className="background">
-        <List games={this.state.searchFor}></List>
+        <List games={this.state.searchFor} currentGame={this.state.gameName}></List>
         </div>
       </>
       );

@@ -40,38 +40,40 @@ export default class Game extends React.Component {
       const { name, deck, id } = game[0];
       const img = game[0].image.super_url;
       return (
-      <div className="game-container" id="game-container">
-          <div className="back-arrow">
-          <a href="#search">
-          <i className="fas fa-arrow-left arrow-icon" ></i>
-          </a>
-        </div>
-        <div className="row">
-          <div className="img-cont">
-            <img src={img}></img>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-title">
-            <p className="single-title">{name}</p>
-            <Heart gameId={this.props.gameId} game={{ name, deck, img }}/>
-          </div>
+      <div className= "background">
+        <div className="game-container" id="game-container">
+            <div className="back-arrow">
+            <a href={this.props.gameSearch === null ? '#favorites' : '#search?game=' + this.props.gameSearch}>
+              <i className="fas fa-arrow-left arrow-icon" ></i>
+            </a>
           </div>
           <div className="row">
-            <div className="col-posts">
-            <p>Total Post: {posts} </p>
+            <div className="img-cont">
+              <img src={img} alt="game-img"></img>
             </div>
           </div>
           <div className="row">
-          <div className="col-description">
-            <p>{deck}</p>
-          </div>
-          </div>
-          <div className="row">
-            <a href={'#thread?gameId=' + id}>
-            <button className="enter-button">Enter Thread</button>
-            </a>
-          </div>
+            <div className="col-title">
+              <p className="single-title">{name}</p>
+              <Heart gameId={this.props.gameId} game={{ name, deck, img }}/>
+            </div>
+            </div>
+            <div className="row">
+              <div className="col-posts">
+              <p>Total Post: {posts} </p>
+              </div>
+            </div>
+            <div className="row">
+            <div className="col-description">
+              <p>{deck}</p>
+            </div>
+            </div>
+            <div className="row">
+              <a href={this.props.gameSearch === null ? '#thread?gameId=' + id : '#thread?gameId=' + id + '&gameSearch=' + this.props.gameSearch}>
+              <button className="enter-button">Enter Thread</button>
+              </a>
+            </div>
+        </div>
       </div>
       );
     }

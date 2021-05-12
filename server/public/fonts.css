@@ -75,7 +75,7 @@ p,
 }
 
 .single-title {
-  font-size: 20px;
+  font-size: 23px;
 }
 
 .enter-button {
@@ -177,5 +177,13 @@ p,
 
   #game-container {
     background-color: #323232;
+  }
+
+  .arrow-icon {
+    margin: 1rem 0;
+  }
+
+  .back-arrow {
+    margin: 0;
   }
 }

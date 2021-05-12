@@ -2,7 +2,6 @@ import React from 'react';
 import Heart from './heart-icon';
 
 export default function GameList(props) {
-
   return (
     <ul>
       {
@@ -14,6 +13,7 @@ export default function GameList(props) {
               img={single.image.medium_url}
               gameid={single.id}
               deck={single.deck}
+              currentGame={props.currentGame}
             />
           );
         })
@@ -41,22 +41,43 @@ class SingleGame extends React.Component {
   }
 
   render() {
-    const { gameid, img, name, deck } = this.props;
-    return (
-    <>
-       <div className="row-game">
-       <a href={'#game?gameId=' + gameid}>
-       <div className="img-container">
-        <img src={img}></img>
-       </div>
-       <div className="title-post">
-          <p>{name}</p>
-        <p>Total Posts: {this.state.posts}</p>
+    const { gameid, img, name, deck, currentGame } = this.props;
+    if (currentGame === undefined) {
+      return (
+        <>
+          <div className="row-game">
+          <a href={'#game?gameId=' + gameid}>
+          <div className="img-container">
+            <img src={img} alt="game-img"></img>
+          </div>
+          <div className="title-post">
+              <p>{name}</p>
+            <p>Total Posts: {this.state.posts}</p>
+            </div>
+          </a>
+            <Heart gameId={gameid} game={{ name, deck, img }}/>
         </div>
-      </a>
-        <Heart gameId={gameid} game={{ name, deck, img }}/>
-    </div>
-    </>
-    );
+        </>
+      );
+    } else {
+      const gameSearch = currentGame.game;
+      return (
+        <>
+          <div className="row-game">
+          <a href={'#game?gameId=' + gameid + '&gameSearch=' + gameSearch}>
+          <div className="img-container">
+            <img src={img} alt="game-img"></img>
+          </div>
+          <div className="title-post">
+              <p>{name}</p>
+            <p>Total Posts: {this.state.posts}</p>
+            </div>
+          </a>
+            <Heart gameId={gameid} game={{ name, deck, img }}/>
+        </div>
+        </>
+      );
+    }
+
   }
 }

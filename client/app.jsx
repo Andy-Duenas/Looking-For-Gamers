@@ -24,17 +24,18 @@ export default class App extends React.Component {
   renderPage() {
     const { route } = this.state;
     const gameId = route.params.get('gameId');
+    const gameSearch = route.params.get('gameSearch');
     if (route.path === '' || route.path === 'search') {
-      return <Search />;
+      return <Search gameSearch={gameSearch}/>;
     }
     if (route.path === 'game') {
-      return <Game gameId={gameId}/>;
+      return <Game gameId={gameId} gameSearch={gameSearch}/>;
     }
     if (route.path === 'favorites') {
       return <Favorites/>;
     }
     if (route.path === 'thread') {
-      return <Thread gameId={gameId}/>;
+      return <Thread gameId={gameId} gameSearch={gameSearch}/>;
     }
   }
 
